@@ -59,6 +59,8 @@
 					$resultadoAdm = $userL->buscarUsuariosAdm($email);
 					
 					while($linha=mysqli_fetch_assoc($resultadoAdm)){
+						$idBancoAdm = $linha['id'];
+						$nomeBancoAdm = $linha['nome'];
 						$emailBancoAdm = $linha['email'];
 						$senhaBancoAdm = $linha['senha'];
 					}
@@ -77,7 +79,7 @@
 							$_SESSION['mensagem']='Senha Incorreta!';
 							$_SESSION['local']='login.php';
 
-							echo "<META HTTP-EQUIV='REFRESH' CONTENT='0; URL=login.php'>";							
+							echo "<meta http-equiv='refresh' content='0;url=jqueryModal.php?numero=1'>";							
 
 						}
 					}
@@ -85,8 +87,12 @@
 
 						$resultadoAlu = $userL->buscarUsuariosAlu($email);
 						while($linha=mysqli_fetch_assoc($resultadoAlu)){
+							$idBancoAlu = $linha['id'];
+							$nomeBancoAlu = $linha['nome'];
 							$emailBancoAlu = $linha['email'];
 							$senhaBancoAlu = $linha['senha'];
+							$cidadeBancoAlu = $linha['cidade'];
+							$descricaoBancoAlu = $linha['descricao'];
 						}
 						if($senha==$senhaBancoAlu){
 							session_start();
@@ -94,13 +100,19 @@
 							$_SESSION['senha'] = $senhaBancoAlu;
 							$_SESSION['id'] = $idBancoAlu;
 							$_SESSION['email'] = $emailBancoAlu;
+							$_SESSION['cidade'] = $cidadeBancoAlu;
+							$_SESSION['descricao'] = $descricaoBancoAlu;
 							echo "<META HTTP-EQUIV='REFRESH' CONTENT='0; URL=cadastro.php'>";
 						}
 						else{
 							$resultadoPro = $userL->buscarUsuariosPro($email);
 							while($linha=mysqli_fetch_assoc($resultadoPro)){
+								$idBancoPro = $linha['id'];
+								$nomeBancoPro = $linha['nome'];
 								$emailBancoPro = $linha['email'];
 								$senhaBancoPro = $linha['senha'];
+								$cidadeBancoPro = $linha['cidade'];
+								$descricaoBancoPro = $linha['descricao'];
 							}
 							if($senha==$senhaBancoPro){
 								session_start();
@@ -108,18 +120,21 @@
 								$_SESSION['senha'] = $senhaBancoPro;
 								$_SESSION['id'] = $idBancoPro;
 								$_SESSION['email'] = $emailBancoPro;
-								echo "<META HTTP-EQUIV='REFRESH' CONTENT='0; URL=index.html'>";
+								$_SESSION['cidade'] = $cidadeBancoPro;
+								$_SESSION['descricao'] = $descricaoBancoPro;
+								echo "<META HTTP-EQUIV='REFRESH' CONTENT='0; URL=home.php'>";
 							}
 							else{
 								session_start();
-								$_SESSION['mensagem']='Senha Incorreta!';
+								$_SESSION['mensagem']='Dados incorretos!';
 								$_SESSION['local']='login.php';
 
-								echo "<META HTTP-EQUIV='REFRESH' CONTENT='0; URL=login.php'>";							
+								echo "<meta http-equiv='refresh' content='0;url=jqueryModal.php?numero=1'>";							
 
 							}							
 
 						}
+
 					}
 					
 				}	

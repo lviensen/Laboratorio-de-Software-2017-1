@@ -28,21 +28,21 @@
 		function buscarUsuariosAdm($email){
 			$bd = new ConexaoBD;
 			$bd->conectar();
-			return $bd->query("SELECT email, senha
+			return $bd->query("SELECT id, nome, email, senha
 			FROM adm WHERE email='$email'");
 			$bd->fechar();
 		}
 		function buscarUsuariosAlu($email){
 			$bd = new ConexaoBD;
 			$bd->conectar();
-			return $bd->query("SELECT email, senha
+			return $bd->query("SELECT email, senha, id, nome, cidade, descricao
 			FROM aluno WHERE email='$email'");
 			$bd->fechar();
 		}
 		function buscarUsuariosPro($email){
 			$bd = new ConexaoBD;
 			$bd->conectar();
-			return $bd->query("SELECT email, senha
+			return $bd->query("SELECT email, senha, id, nome, cidade, descricao
 			FROM professor WHERE email='$email'");
 			$bd->fechar();
 		}
