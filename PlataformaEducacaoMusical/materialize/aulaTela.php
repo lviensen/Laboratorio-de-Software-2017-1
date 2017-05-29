@@ -58,7 +58,7 @@
                         <div class='col s12 m12'>
                           <div class='card horizontal'>
                             <div class='card-image'>
-                              <h5 class='center'>Aula".$contador." </h5>
+                              <h5 class='center'>Aula 2 </h5>
                             </div>
                             <div class='card-stacked'>
                               <div class='card-content'>

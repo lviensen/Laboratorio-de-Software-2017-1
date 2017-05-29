@@ -19,7 +19,7 @@
         <div class="navbar-fixed">
             <nav class="amber darken-4 z-depth-3">
                 <div class="nav-wrapper">
-                  <a href="#" class="brand-logo">Escola Musical</a>
+                  <a href="#" class="brand-logo" style="margin-left: 5%;">Escola Musical</a>
                   <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <li><a href="sass.html"><i class="material-icons right">info_outline</i> Notificações</a></li>
                     <li><a href="badges.html"><i class="material-icons right">library_music</i> Cursos</a></li>

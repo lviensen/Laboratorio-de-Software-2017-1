@@ -29,8 +29,11 @@
 					
 					$inst->inserirInst();
 					
+					$_SESSION['mensagem']='Instrumento cadastrado com sucesso';
+					$_SESSION['local']='home.php';
 					
-					echo "<META HTTP-EQUIV='REFRESH' CONTENT='0; URL=cadastroInstrumento.php'>";
+					echo "<meta http-equiv='refresh' 
+					content='0;url=jquerymodal.php?numero=1'>";
 					
 				}		
 			?>

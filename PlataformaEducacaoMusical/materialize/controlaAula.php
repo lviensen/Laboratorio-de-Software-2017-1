@@ -33,8 +33,11 @@
 					
 					$aula->inserirAula();
 					
+					$_SESSION['mensagem']='Aula cadastrada com sucesso';
+					$_SESSION['local']='instrumentoTela.php';
 					
-					echo "<META HTTP-EQUIV='REFRESH' CONTENT='0; URL=instrumentoTela.php'>";
+					echo "<meta http-equiv='refresh' 
+					content='0;url=jquerymodal.php?numero=1'>";					
 					
 				}		
 
