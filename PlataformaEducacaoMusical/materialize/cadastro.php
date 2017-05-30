@@ -87,14 +87,22 @@
                                 </div>
                             <div class="col s2"></div>
                             </div>                             
-                                                                                
-                            <br>
-                            <center>                               
+                            <center>                                
                                 <div class='row'>
-                                    <button type='submit' name='incluir' name="incluir" class='col s12 btn btn-large waves-effect waves-light btn'>Cadastrar</button>
+                                    <div class="col s2 offset-s5">
+                                        <button type='submit' name='incluir' name="incluir" class='col s12 btn btn-small waves-effect waves-light btn'>Cadastrar</button>   
+                                    </div>                                   
                                 </div>
-                            </center>
-                                    <a href="login.php">Já possuo uma conta. Fazer login.</a>
+                            </center>                                                                                
+                            <br>
+                            <center>                                
+                                <div class='row'>
+                                    <div class="col s4 offset-s4">
+                                        <a href="login.php">Já possuo uma conta. Fazer login.</a>   
+                                    </div>                                   
+                                </div>
+                            </center>  
+                                    
                         </form>
                     </div>
                 </div>

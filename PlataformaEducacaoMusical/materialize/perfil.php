@@ -24,7 +24,7 @@
         <div class="navbar-fixed">
             <nav class="amber darken-4 z-depth-3">
                 <div class="nav-wrapper">
-                  <a href="#" class="brand-logo" style="margin-left: 5%;">Escola Musical</a>
+                  <a href="home.php" class="brand-logo" style="margin-left: 5%;">Escola Musical</a>
                   <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
                   <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <li><a href="sass.html"><i class="material-icons right">email</i> Mensagens</a></li>
@@ -42,56 +42,51 @@
             </nav>
         </div>
         <div class="divider"></div>
-        <div class="container">
-          <div class="section">
-            <div class="row">
-              <div class="col-md-12">
-                <ul class="collection with-header">
-                  <li class="collection-header"><a href="#" class="brand-logo black-text">Meus Instrumentos</a></li>
-
-                  <?php
-                    include "Instrumento.php";
-                    
-                    $inst = new Instrumento;
-                    
-                    $resultado = $inst->mostrarInstrumento();
-                    
-                    if($resultado){
-                      while($linha=mysqli_fetch_assoc($resultado)){
-                        $nome=$linha['nome'];
-                        echo "<li class='collection-item'><div>".$nome."<a href='instrumentoTela.php'' class='secondary-content'><i class='material-icons orange-text'>visibility</i></a></div></li>";                        
-                      }
-                    }
-                    ?>
-                </ul>
-                <a class="right btn-floating waves-effect waves-light red" href="cadastroInstrumento.php"><i class="material-icons">add</i></a>
+        <div class="row">
+          <center>
+            <div class="section"></div>
+            <div class="container">
+              <div class="z-depth-1 grey lighten-4 row">
+                <div class="col s 6">
+                  <div class="row">
+                    <div class="col s 12 offset-s1">
+                      <h5>Detalhes do usuário</h5>
+                    </div>                    
+                  </div>
+                  <div class="row">
+                    <div class="col s5 offset-s1">
+                      <p class="left-align"><a href="#"><u>Modificar Perfil</u></a></p>
+                      <br>                      
+                      <p class="left-align">Nome: Marcelo</p>
+                      <p class="left-align">Email: marcelo@email.com</p>
+                      <p class="left-align">Cidade: Porto Alegre</p>
+                    </div>
+                    <div class="row">
+                      <div class="col s12 m6">
+                        <div class="card white darken-1">
+                          <div class="card-content black-text">
+                            <p>Professor de música formado pela Universidade Federal de Santa Maria. Especializado em Violão e Clarinete. Atua na banda do Exército.</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col s5 offset-s1">
+                      <div class="col s 12 offset-s1">
+                        <h5>Cursos do usuário</h5>
+                      </div>
+                      <div class="col s5">                  
+                      <p class="left-align">Violão</p>
+                      <p class="left-align">Guitarra</p>
+                      <p class="left-align">Clarinete</p>
+                      </div>
+                    </div>
+                    </div>
+                  </div>  
+                  <br><br>              
+                </div>
               </div>
             </div>
-          </div>
-        </div>
-        <div class="divider"></div>
-        <div class="container">
-          <div class="section">
-            <div class="row">
-              <div class="col-md-12">
-                <ul class="collection with-header">
-                  <li class="collection-header"><a href="#" class="brand-logo black-text">Outros Instrumentos</a></li>
-                  <?php
-                    
-                    $resultado = $inst->mostrarInstrumento();
-                    
-                    if($resultado){
-                      while($linha=mysqli_fetch_assoc($resultado)){
-                        $nome=$linha['nome'];
-                        echo "<li class='collection-item'><div>".$nome."<a href='#!'' class='secondary-content'><i class='material-icons orange-text'>visibility</i></a></div></li>";                        
-                      }
-                    }
-                    ?>
-                </ul>
-                <a class="right btn-floating waves-effect waves-light red" href="cadastroInstrumento.php"><i class="material-icons">add</i></a>
-              </div>
-            </div>
-          </div>
+          </center>
         </div>
         <div class="divider"></div>
 

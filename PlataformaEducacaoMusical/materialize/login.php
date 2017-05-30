@@ -55,15 +55,21 @@
                                 </div>
                             <div class="col s2"></div>
                             </div>
-
-                            <br>
-                            <center>
-                                
+                            <center>                                
                                 <div class='row'>
-                                    <button type='submit' name='logar' class='col s12 btn btn-large waves-effect   green darken-1'>Entrar</button>
+                                    <div class="col s3 offset-s4">
+                                     <button type='submit' name='logar' class='col s12 btn btn-small waves-effect   green darken-1'>Entrar</button>   
+                                    </div>                                   
                                 </div>
                             </center>
-                                            <a href="cadastro.php">Criar um conta</a>
+                            <center>                                
+                                <div class='row'>
+                                    <div class="col s3 offset-s4">
+                                        <a href="cadastro.php">Criar um conta</a>  
+                                    </div>                                   
+                                </div>
+                            </center>
+                                            
 
                         </form>
                     </div>

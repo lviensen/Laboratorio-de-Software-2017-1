@@ -42,11 +42,8 @@
 					elseif ($tipo == "professor") {
 						$user->inserirPro();
 					}
-					$_SESSION['mensagem']='Usuário cadastrado com sucesso';
-					$_SESSION['local']='login.php';
 					
-					echo "<meta http-equiv='refresh' 
-					content='0;url=jquerymodal.php?numero=1'>";
+					echo "<META HTTP-EQUIV='REFRESH' CONTENT='0; URL=login.php'>";
 					
 				}		
 
