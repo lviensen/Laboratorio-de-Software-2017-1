@@ -21,8 +21,8 @@
                 <div class="nav-wrapper">
                   <a href="home.php" class="brand-logo" style="margin-left: 5%;">Escola Musical</a>
                   <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li><a href="#"><i class="material-icons right">email</i> Mensagens</a></li>
-                    <li><a href="#"><i class="material-icons right">info_outline</i> Notificações</a></li>
+                    <li><a href="mensagensTela.php"><i class="material-icons right">email</i> Mensagens</a></li>
+                    <li><a href="notificacaoTela.php"><i class="material-icons right">info_outline</i> Notificações</a></li>
                     <li><a href="#"><i class="material-icons right">library_music</i> Cursos</a></li>
                     <li><a class="dropdown-button" href="#!" data-activates="dropdown1"><?php session_start(); echo $_SESSION['nome']; ?> <i class="material-icons right">arrow_drop_down</i></a></li>
                   </ul>
@@ -86,25 +86,25 @@
                 <div class='row'>
                   <div class='col-md-12'>
                     <div class='card horizontal'>
-                      <a class='black-text'><i class='small material-icons'>list</i>  Realizar atividades de conhecimento - Aula 1</a>
+                      <a class='black-text' href='atividadeTela.php'><i class='small material-icons'>list</i>  Realizar atividades de conhecimento - Aula 1</a>
                     </div>              
                   </div>            
                 </div>  
-                <button class='btn waves-effect waves-light green' type='submit' name='action'>Próxima aula
+                <a class='btn waves-effect waves-light green' href='aulaTela.php' type='submit' name='action'>Próxima aula
                   <i class='material-icons right'>send</i>
-                </button>          
+                </a>          
                 </div>            
             </div>";
             }
           }
         ?>
-                            <center>                                
-                        <div class='row'>
-                            <div class="col s4 offset-s4">
-                                <a href="instrumentoTela.php">Voltar</a>   
-                            </div>                                   
-                        </div>
-                    </center> 
+        <center>                                
+          <div class='row'>
+              <div class="col s4 offset-s4">
+                  <a href="instrumentoTela.php">Voltar</a>   
+              </div>                                   
+          </div>
+      </center> 
         <!--Import jQuery before materialize.js-->
         <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
         <script type="text/javascript" src="js/materialize.min.js"></script>

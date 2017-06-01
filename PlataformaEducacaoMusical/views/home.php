@@ -27,8 +27,8 @@
                   <a href="#" class="brand-logo" style="margin-left: 5%;">Escola Musical</a>
                   <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
                   <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li><a href="#"><i class="material-icons right">email</i> Mensagens</a></li>
-                    <li><a href="#"><i class="material-icons right">info_outline</i> Notificações</a></li>
+                    <li><a href="mensagensTela.php"><i class="material-icons right">email</i> Mensagens</a></li>
+                    <li><a href="notificacaoTela.php"><i class="material-icons right">info_outline</i> Notificações</a></li>
                     <li><a href="#"><i class="material-icons right">library_music</i> Cursos</a></li>
                     <li><a class="dropdown-button" href="#!" data-activates="dropdown1"><?php session_start(); echo $_SESSION['nome']; ?> <i class="material-icons right">arrow_drop_down</i></a></li>
                   </ul>
@@ -60,7 +60,7 @@
                     if($resultado){
                       while($linha=mysqli_fetch_assoc($resultado)){
                         $nome=$linha['nome'];
-                        echo "<li class='collection-item'><div>".$nome."<a href='instrumentoTela.php'' class='secondary-content'><i class='material-icons orange-text'>visibility</i></a></div></li>";                        
+                        echo "<li class='collection-item'><div>".$nome."<a href='./instrumentoTela.php'' class='secondary-content tooltipped' data-position='bottom' data-delay='50' data-tooltip='Visualizar Instrumento'><i class='material-icons orange-text'>visibility</i></a></div></li>";                        
                       }
                     }
                     ?>
@@ -84,12 +84,12 @@
                     if($resultado){
                       while($linha=mysqli_fetch_assoc($resultado)){
                         $nome=$linha['nome'];
-                        echo "<li class='collection-item'><div>".$nome."<a href='#!'' class='secondary-content'><i class='material-icons orange-text'>visibility</i></a></div></li>";                        
+                        echo "<li class='collection-item'><div>".$nome."<a href='#!'' class='secondary-content tooltipped' data-position='bottom' data-delay='50' data-tooltip='Visualizar Instrumento'><i class='material-icons orange-text'>visibility</i></a></div></li>";                        
                       }
                     }
                     ?>
                 </ul>
-                <a class="right btn-floating waves-effect waves-light red" href="cadastroInstrumento.php"><i class="material-icons">add</i></a>
+                <a class="right btn-floating waves-effect waves-light red tooltipped" data-position="bottom" data-delay="50" data-tooltip="Adicionar Instrumento" href="cadastroInstrumento.php" ><i class="material-icons">add</i></a>
               </div>
             </div>
           </div>

@@ -19,10 +19,10 @@
         <div class="navbar-fixed">
             <nav class="amber darken-4 z-depth-3">
                 <div class="nav-wrapper">
-                  <a href="home.php" class="brand-logo">Escola Musical</a>
+                  <a href="home.php" class="brand-logo" style="margin-left: 5%;">Escola Musical</a>
                   <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li><a href="#"><i class="material-icons right">email</i> Mensagens</a></li>
-                    <li><a href="#"><i class="material-icons right">info_outline</i> Notificações</a></li>
+                    <li><a href="mensagensTela.php"><i class="material-icons right">email</i> Mensagens</a></li>
+                    <li><a href="notificacaoTela.php"><i class="material-icons right">info_outline</i> Notificações</a></li>
                     <li><a href="#"><i class="material-icons right">library_music</i> Cursos</a></li>
                     <li><a class="dropdown-button" href="#!" data-activates="dropdown1"><?php session_start(); echo $_SESSION['nome']; ?> <i class="material-icons right">arrow_drop_down</i></a></li>
                   </ul>
@@ -74,18 +74,64 @@
                             </div>
                         </div>
                         <div class="col s2"></div>
-                    </div>                    
-                    <br>
+                    </div>     
+                    <div class="row">
+                        <div class="col s4"></div>
+                        <div class="col s8 m6 l8 offset-s2">
+                            <h5>Atividades:</h5>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s2"></div>
+                        <div class="input-field col s12 m6 l8 ">
+                            <i class="material-icons prefix">assignment</i>
+                            <input id="cidade" type="text" class="validate" name="cidade">
+                            <label for="icon_telephone">Pergunta</label>
+                        </div>
+                    <div class="col s2"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col s3"></div>
+                        <div class="input-field col s8 m4 l7 ">
+                            <input id="cidade" type="text" class="validate" name="cidade">
+                            <label for="icon_telephone">Alternativa 1</label>
+                        </div>
+                    <div class="col s2"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col s3"></div>
+                        <div class="input-field col s8 m4 l7 ">
+                            <input id="cidade" type="text" class="validate" name="cidade">
+                            <label for="icon_telephone">Alternativa 2</label>
+                        </div>
+                    <div class="col s4"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col s3"></div>
+                        <div class="input-field col s8 m4 l7 ">
+                            <input id="cidade" type="text" class="validate" name="cidade">
+                            <label for="icon_telephone">Alternativa 3</label>
+                        </div>
+                    </div>  
+                    <div class="row">
+                        <div class="col s8"></div>
+                        <div class="col s3 m2 l2">
+                            <a class="right btn-floating waves-effect waves-light red tooltipped" data-position="bottom" data-delay="50" data-tooltip="Adicionar outra Pergunta" href="cadastroInstrumento.php" ><i class="material-icons">add</i></a>   
+                        </div>
+                    </div>
+                    <br><br>              
                     <center>                               
                         <div class='row'>
-                            <button type='submit' name='cadastroAula' name="cadastroAula" class='col s12 btn btn-large waves-effect waves-light btn green'>Adicionar</button>
+                            <div class="col s2 offset-s5">
+                                <button type='submit' name='cadastroAula' name="cadastroAula" class='col s12 btn btn-small waves-effect waves-light btn green'>Adicionar</button>
+                            </div>
                         </div>
                     </center>
                     <br>
                     <center>                                
                         <div class='row'>
                             <div class="col s4 offset-s4">
-                                <a href="home.php">Cancelar.</a>   
+                                <a href="instrumentoTela.php">Cancelar.</a>   
                             </div>                                   
                         </div>
                     </center> 
