@@ -77,7 +77,7 @@
 						else{
 							session_start();
 							$_SESSION['mensagem']='Senha Incorreta!';
-							$_SESSION['local']='./login.php';
+							$_SESSION['local']='../login.php';
 
 							echo "<meta http-equiv='refresh' content='0;url=../views/jqueryModal.php?numero=1'>";							
 
@@ -102,7 +102,7 @@
 							$_SESSION['email'] = $emailBancoAlu;
 							$_SESSION['cidade'] = $cidadeBancoAlu;
 							$_SESSION['descricao'] = $descricaoBancoAlu;
-							echo "<META HTTP-EQUIV='REFRESH' CONTENT='0; URL=../cadastro.php'>";
+							echo "<META HTTP-EQUIV='REFRESH' CONTENT='0; URL=../views/homeAluno.php'>";
 						}
 						else{
 							$resultadoPro = $userL->buscarUsuariosPro($email);
@@ -138,6 +138,31 @@
 					}
 					
 				}	
+				elseif ($operacao == "alterar"){
+					$id = $_POST["id"];
+					$nome = $_POST["nome"];
+					$cidade = $_POST["cidade"];
+					$email = $_POST["email"];
+					$senha = $_POST["senha"];
+					$descricao = $_POST["descricao"];
+					
+					$u = new Usuario;
+					
+					$u->id = $id;
+					$u->nome = $nome;
+					$u->cidade = $cidade;
+					$u->email = $email;
+					$u->senha = $senha;
+					$u->descricao = $descricao;
+					$u->atualizarUsuarioProfessor();
+					
+					$_SESSION['mensagem']='Usuário alterado com sucesso';
+					$_SESSION['local']='perfil.php';
+					
+					echo "<meta http-equiv='refresh' 
+					content='0;url=../views/jquerymodal.php?numero=1'>";
+					
+				}
 			?>
 		</div>
 	</body>	

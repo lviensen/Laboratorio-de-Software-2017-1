@@ -9,7 +9,7 @@
         <!--Let browser know website is optimized for mobile-->
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </head>
-    <body>
+    <body class="grey lighten-2">
         <!-- Dropdown Structure -->
         <ul id="dropdown1" class="dropdown-content">
           <li><a href="perfil.php" class="orange-text">Perfil</a></li>
@@ -47,7 +47,7 @@
             <div class="section"></div>
             <div class="container">
               <div class="z-depth-1 grey lighten-4 row">
-                <div class="col s 6">
+                <div class="col s 12">
                   <div class="row">
                     <div class="col s 12 offset-s1">
                       <h5>Detalhes do usuário</h5>
@@ -57,36 +57,48 @@
                     <div class="col s5 offset-s1">
                       <p class="left-align"><a href="perfilEditar.php"><u>Modificar Perfil</u></a></p>
                       <br>                      
-                      <p class="left-align">Nome: Marcelo</p>
-                      <p class="left-align">Email: marcelo@email.com</p>
-                      <p class="left-align">Cidade: Porto Alegre</p>
+                      <p class="left-align">Nome: <?php echo $_SESSION['nome']; ?></p>
+                      <p class="left-align">Email: <?php echo $_SESSION['email']; ?></p>
+                      <p class="left-align">Cidade: <?php echo $_SESSION['cidade']; ?></p>
                     </div>
-                    <div class="row">
-                      <div class="col s12 m6">
-                        <div class="card white darken-1">
-                          <div class="card-content black-text">
-                            <p>Professor de música formado pela Universidade Federal de Santa Maria. Especializado em Violão e Clarinete. Atua na banda do Exército.</p>
-                          </div>
+                    <div class="col s6 m6">
+                      <div class="card white darken-1">
+                        <div class="card-content black-text">
+                          <p><?php echo $_SESSION['descricao']; ?></p>
                         </div>
                       </div>
                     </div>
-                    <div class="col s5 offset-s1">
+                  </div>
+                  <div class="row">
+                    <div class="col s6 offset-s1">
                       <div class="col s 12 offset-s1">
                         <h5>Cursos do usuário</h5>
                       </div>
-                      <div class="col s5">                  
-                      <p class="left-align">Violão</p>
-                      <p class="left-align">Guitarra</p>
-                      <p class="left-align">Clarinete</p>
+                      <?php
+                        include "../dao/Instrumento.php";
+                        
+                        $inst = new Instrumento;
+                        
+                        $resultado = $inst->mostrarInstrumentoProf($_SESSION['id']);
+                        
+                        ?>
+                      <div class="col s5">            
+                      <?php
+                        if($resultado){
+                          while($linha=mysqli_fetch_assoc($resultado)){
+                            $nome=$linha['nome'];
+                            echo "<p class='left-align'>".$nome."</p>";                   
+                          }
+                        }
+                      ?>      
+                      
                       </div>
                     </div>
-                    </div>
-                  </div>  
-                  <br><br>              
-                </div>
+                  </div>
+                </div>  
+                <br><br>              
               </div>
             </div>
-          </center>
         </div>
         <div class="divider"></div>
 

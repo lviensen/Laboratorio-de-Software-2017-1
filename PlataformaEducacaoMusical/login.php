@@ -10,7 +10,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </head>
    
-    <body>
+    <body class="grey lighten-2">
 
 
         <div class="row">
@@ -23,11 +23,11 @@
                             <a class="brand-logo center" href="index.html">Escola Musical</a>
                         </div>
                     </nav>
-                    <div class="section"></div>
-
-                    <div class="section"></div>
-
-
+                    <div class="section">
+                        <div class="nav-wrapper">
+                            <h4 class="brand-logo center">Login</h4>
+                        </div>
+                    </div>
                     <div class="z-depth-1 grey lighten-4 row">
                         <form class="col s12 login-form" method="post" action="./controller/controla.php">
                             <div class='row'>

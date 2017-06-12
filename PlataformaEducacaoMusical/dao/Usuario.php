@@ -8,7 +8,7 @@
 		public $cidade;
 		public $senha;
 		public $descricao;
-		
+		public $tipo;
 		function inserirAlu(){
 			$bd = new ConexaoBD;
 			$sql = "INSERT INTO aluno (nome, email, cidade, senha, descricao)
@@ -46,8 +46,32 @@
 			FROM professor WHERE email='$email'");
 			$bd->fechar();
 		}
+		function mostrarProfessor(){
+			$bd = new ConexaoBD;
+			$bd->conectar();
+			return $bd->query("SELECT * FROM professor");
+			$bd->fechar();
+		}
+		function mostrarProfessorInstrumento($codigo){
+			$bd = new ConexaoBD;
 
-		
+			$bd->conectar();
+			return $bd->query("SELECT DISTINCT professor.nome as nomeProf FROM professor, prof_inst, instrumento WHERE instrumento.id='$codigo' and prof_inst.idInst='$codigo' and prof_inst.idInst=instrumento.id and prof_inst.idProf=professor.id");
+			$bd->fechar();
+		}		
+		function mostrarUsuarioAlterar($id){
+			$bd = new ConexaoBD;
+			$bd->conectar();
+			return $bd->query("SELECT * FROM professor WHERE id='$id'");
+			$bd->fechar();
+		}
+		function atualizarUsuarioProfessor(){
+			$bd = new ConexaoBD;
+			$bd->conectar();
+			$bd->query("UPDATE professor SET nome='$this->nome',
+			email='$this->email', cidade='$this->cidade', senha='$this->senha', descricao='$this->descricao' WHERE id='$this->id'");
+			$bd->fechar();
+		}
 	}
 
 

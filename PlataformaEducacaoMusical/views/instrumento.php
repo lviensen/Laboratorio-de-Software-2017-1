@@ -24,12 +24,12 @@
         <div class="navbar-fixed">
             <nav class="amber darken-4 z-depth-3">
                 <div class="nav-wrapper">
-                  <a href="#" class="brand-logo" style="margin-left: 5%;">Escola Musical</a>
+                  <a href="homeAluno.php" class="brand-logo" style="margin-left: 5%;">Escola Musical</a>
                   <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
                   <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <li><a href="mensagensTela.php"><i class="material-icons right">email</i> Mensagens</a></li>
                     <li><a href="notificacaoTela.php"><i class="material-icons right">info_outline</i> Notificações</a></li>
-                    <li><a href="#"><i class="material-icons right">library_music</i> Cursos</a></li>
+                    <li class="active"><a href="#"><i class="material-icons right">library_music</i> Instrumentos</a></li>
                     <li><a class="dropdown-button" href="#!" data-activates="dropdown1"><?php session_start(); echo $_SESSION['nome']; ?> <i class="material-icons right">arrow_drop_down</i></a></li>
                   </ul>
                   <ul class="side-nav" id="mobile-demo">
@@ -43,64 +43,52 @@
             </nav>
         </div>
         <div class="divider"></div>
+        <div class="section">
+            <div class="nav-wrapper">
+                <h4 class="brand-logo center">Lista de Instrumentos</h4>
+            </div>
+        </div>
         <div class="container">
           <div class="section">
             <div class="row">
               <div class="col-md-12">
                 <ul class="collection with-header">
-                  <li class="collection-header"><a href="#" class="brand-logo black-text">Meus Instrumentos</a></li>
+                  <li class="collection-header">                        
+                    <form class="form-horizontal" role="form">
+                      <div class="form-group">
+                          <div class="col-sm-10">
+                              <input type="text" class="form-control" id="pesquisa" name="pesquisa" placeholder="Buscar">
+                          </div>
+                      </div>        
+                    </form>
+                  </li>
 
                   <?php
                     include "../dao/Instrumento.php";
                     
                     $inst = new Instrumento;
                     
-                    $resultado = $inst->mostrarInstrumentoProf($_SESSION['id']);
-                    
-                    if($resultado){
-                      while($linha=mysqli_fetch_assoc($resultado)){
-                        $nome=$linha['nome'];
-                        echo "<li class='collection-item'><div>".$nome."<a href='./instrumentoTela.php'' class='secondary-content tooltipped' data-position='bottom' data-delay='50' data-tooltip='Visualizar Instrumento'><i class='material-icons orange-text'>visibility</i></a></div></li>";                        
-                      }
-                    }
-                    ?>
-                </ul>
-                <a class="right btn-floating waves-effect waves-light red tooltipped" data-position="bottom" data-delay="50" data-tooltip="Adicionar Instrumento" href="cadastroInstrumento.php" ><i class="material-icons">add</i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="divider"></div>
-        <div class="container">
-          <div class="section">
-            <div class="row">
-              <div class="col-md-12">
-                <ul class="collection with-header">
-                  <li class="collection-header"><a href="#" class="brand-logo black-text">Outros Instrumentos</a></li>
-                  <?php
-                    
                     $resultado = $inst->mostrarInstrumento();
                     
                     if($resultado){
                       while($linha=mysqli_fetch_assoc($resultado)){
                         $nome=$linha['nome'];
-                        echo "<li class='collection-item'><div>".$nome."<a href='#!'' class='secondary-content tooltipped' data-position='bottom' data-delay='50' data-tooltip='Cadastrar-se'><i class='material-icons green-text'>add</i></a></div></li>";                        
+                        $idInstrumento=$linha['id'];
+                        echo "<li class='collection-item'><div>".$nome."<a href='./InstrumentoProfessores.php?id=".$linha['id']."'' class='secondary-content tooltipped' data-position='bottom' data-delay='50' data-tooltip='Ver Professores'><i class='material-icons orange-text'>visibility</i> </a></div></li>";                        
                       }
                     }
                     ?>
                 </ul>
-                <a class="right btn-floating waves-effect waves-light red tooltipped" data-position="bottom" data-delay="50" data-tooltip="Adicionar Instrumento" href="cadastroInstrumento.php" ><i class="material-icons">add</i></a>
               </div>
             </div>
           </div>
         </div>
-        <div class="divider"></div>
 
         <!--Import jQuery before materialize.js-->
         <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
         <script type="text/javascript" src="../js/materialize.min.js"></script>
         <script type="text/javascript">
-        	$(".button-collapse").sideNav();
+          $(".button-collapse").sideNav();
           $(document).ready(function(){
             $('.tooltipped').tooltip({delay: 50});
           });

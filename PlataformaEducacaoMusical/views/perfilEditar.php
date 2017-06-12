@@ -9,7 +9,7 @@
         <!--Let browser know website is optimized for mobile-->
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </head>
-    <body>
+    <body class="grey lighten-2">
         <!-- Dropdown Structure -->
         <ul id="dropdown1" class="dropdown-content">
           <li><a href="perfil.php" class="orange-text">Perfil</a></li>
@@ -24,7 +24,7 @@
         <div class="navbar-fixed">
             <nav class="amber darken-4 z-depth-3">
                 <div class="nav-wrapper">
-                  <a href="#" class="brand-logo" style="margin-left: 5%;">Escola Musical</a>
+                  <a href="home.php" class="brand-logo" style="margin-left: 5%;">Escola Musical</a>
                   <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
                   <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <li><a href="mensagensTela.php"><i class="material-icons right">email</i> Mensagens</a></li>
@@ -51,18 +51,36 @@
                             <h4 class="brand-logo center">Alterar dados do Perfil</h4>
                         </div>
                     </div>
+                    <?php
+                        include "../dao/Usuario.php";
+                        
+                        $u = new Usuario;
+                        $resultado = $u->mostrarUsuarioAlterar($_SESSION['id']);
+                        
+                        if($resultado){
+                            while($linha=mysqli_fetch_assoc($resultado)){
+                                $nome = $linha['nome'];
+                                $cidade = $linha['cidade'];
+                                $email = $linha['email'];
+                                $senha = $linha['senha'];
+                                $descricao = $linha['descricao'];
+                            }
+                        }
+
+                    ?>
                     <div class="z-depth-1 grey lighten-4 row">
-                        <form class="col s12 login-form" method="post" action="perfil.php">
+                        <form class="col s12 login-form" method="post" action="../controller/controla.php">
                             <div class='row'>
                                 <div class='col s12'>
                                 </div>
                             </div>
-                            <input type="hidden" name="operacao" value="incluir"/>
+                            <input type="hidden" name="operacao" value="alterar"/>
+                            <input type="hidden" name="id" value="<?php echo $_SESSION['id']; ?>">
                             <div class="row">
                                 <div class="col s2"></div>
                                 <div class="input-field col s12 m6 l8">
                                     <i class="material-icons prefix">perm_identity</i>
-                                    <input id="nome" type="text" class="validate" name="nome">
+                                    <input id="nome" type="text" class="validate" name="nome" value="<?php echo $nome ?>">
                                     <label for="icon_prefix">Nome</label>
                                 </div>
                                 <div class="col s2"></div>
@@ -71,7 +89,7 @@
                                 <div class="col s2"></div>
                                 <div class="input-field col s12 m6 l8 ">
                                     <i class="material-icons prefix">email</i>
-                                    <input id="email" type="email" class="validate" name="email">
+                                    <input id="email" type="email" class="validate" name="email" value="<?php echo $email ?>">
                                     <label for="icon_telephone">Email</label>
                                 </div>
                             <div class="col s2"></div>
@@ -80,7 +98,7 @@
                                 <div class="col s2"></div>
                                 <div class="input-field col s12 m6 l8 ">
                                     <i class="material-icons prefix">location_on</i>
-                                    <input id="cidade" type="text" class="validate" name="cidade">
+                                    <input id="cidade" type="text" class="validate" name="cidade" value="<?php echo $cidade ?>">
                                     <label for="icon_telephone">Cidade</label>
                                 </div>
                             <div class="col s2"></div>
@@ -89,7 +107,7 @@
                                 <div class="col s2"></div>
                                 <div class="input-field col s12 m6 l8 ">
                                     <i class="material-icons prefix">vpn_key</i>
-                                    <input id="senha" type="password" class="validate" name="senha">
+                                    <input id="senha" type="password" class="validate" name="senha" value="<?php echo $senha ?>">
                                     <label for="icon_telephone">Senha</label>
                                 </div>
                             <div class="col s2"></div>
@@ -98,7 +116,7 @@
                                 <div class="col s2"></div>
                                 <div class="input-field col s12 m6 l8 ">
                                     <i class="material-icons prefix">mode_edit</i>
-                                    <textarea id="descricao" class="materialize-textarea" name="descricao"></textarea>
+                                    <textarea id="descricao" class="materialize-textarea" name="descricao"><?php echo $descricao ?></textarea>
                                     <label for="textarea1">Escreva uma descrição sobre você.</label>
                                 </div>
                             <div class="col s2"></div>
@@ -106,7 +124,7 @@
                             <center>                                
                                 <div class='row'>
                                     <div class="col s2 offset-s5">
-                                        <button type='submit' name='incluir' name="incluir" class='col s12 btn btn-small waves-effect waves-light btn'>Alterar</button>   
+                                        <button type='submit' name='alterar' name="alterar" class='col s12 btn btn-small waves-effect waves-light btn'>Alterar</button>   
                                     </div>                                   
                                 </div>
                             </center>                                                                                

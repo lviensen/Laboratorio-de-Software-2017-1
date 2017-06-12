@@ -9,7 +9,7 @@
         <!--Let browser know website is optimized for mobile-->
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </head>
-    <body>
+    <body class="grey lighten-2">
         <!-- Dropdown Structure -->
         <ul id="dropdown1" class="dropdown-content">
           <li><a href="#!" class="orange-text">Perfil</a></li>
@@ -64,7 +64,7 @@
                         <div class="col s2"></div>
                         <div class="input-field col s12 m6 l8">
                             <div class="file-field input-field">
-                              <div class="btn orange lighten-3">
+                              <div class="btn orange lighten-1">
                                 <span>Arquivo</span>
                                 <input type="file">
                               </div>

@@ -9,7 +9,7 @@
         <!--Let browser know website is optimized for mobile-->
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </head>
-    <body>
+    <body class="grey lighten-2">
         <!-- Dropdown Structure -->
         <ul id="dropdown1" class="dropdown-content">
           <li><a href="perfil.php" class="orange-text">Perfil</a></li>
@@ -53,7 +53,7 @@
                                       <div class='col s12 m12'>
                                         <div class='card horizontal'>
                                           <div class='card-image'>
-                                            <h5 class='center'>Aula ".$contador."</h5>
+                                            <h5 class='center'>   Aula ".$contador."</h5>
                                           </div>
                                           <div class='card-stacked'>
                                             <div class='card-content'>

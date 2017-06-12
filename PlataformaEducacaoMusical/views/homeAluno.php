@@ -24,12 +24,12 @@
         <div class="navbar-fixed">
             <nav class="amber darken-4 z-depth-3">
                 <div class="nav-wrapper">
-                  <a href="#" class="brand-logo" style="margin-left: 5%;">Escola Musical</a>
+                  <a href="homeAluno.php" class="brand-logo" style="margin-left: 5%;">Escola Musical</a>
                   <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
                   <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <li><a href="mensagensTela.php"><i class="material-icons right">email</i> Mensagens</a></li>
                     <li><a href="notificacaoTela.php"><i class="material-icons right">info_outline</i> Notificações</a></li>
-                    <li><a href="#"><i class="material-icons right">library_music</i> Cursos</a></li>
+                    <li><a href="#"><i class="material-icons right">library_music</i> Instrumentos</a></li>
                     <li><a class="dropdown-button" href="#!" data-activates="dropdown1"><?php session_start(); echo $_SESSION['nome']; ?> <i class="material-icons right">arrow_drop_down</i></a></li>
                   </ul>
                   <ul class="side-nav" id="mobile-demo">
@@ -55,17 +55,16 @@
                     
                     $inst = new Instrumento;
                     
-                    $resultado = $inst->mostrarInstrumentoProf($_SESSION['id']);
+                    $resultado = $inst->mostrarInstrumentoAlu($_SESSION['id']);
                     
                     if($resultado){
                       while($linha=mysqli_fetch_assoc($resultado)){
                         $nome=$linha['nome'];
-                        echo "<li class='collection-item'><div>".$nome."<a href='./instrumentoTela.php'' class='secondary-content tooltipped' data-position='bottom' data-delay='50' data-tooltip='Visualizar Instrumento'><i class='material-icons orange-text'>visibility</i></a></div></li>";                        
+                        echo "<li class='collection-item'><div>".$nome."<a href='./instrumentoTelaAluno.php'' class='secondary-content tooltipped' data-position='bottom' data-delay='50' data-tooltip='Visualizar Instrumento'><i class='material-icons orange-text'>visibility</i></a></div></li>";                        
                       }
                     }
                     ?>
                 </ul>
-                <a class="right btn-floating waves-effect waves-light red tooltipped" data-position="bottom" data-delay="50" data-tooltip="Adicionar Instrumento" href="cadastroInstrumento.php" ><i class="material-icons">add</i></a>
               </div>
             </div>
           </div>
@@ -75,22 +74,22 @@
           <div class="section">
             <div class="row">
               <div class="col-md-12">
-                <ul class="collection with-header">
-                  <li class="collection-header"><a href="#" class="brand-logo black-text">Outros Instrumentos</a></li>
-                  <?php
-                    
-                    $resultado = $inst->mostrarInstrumento();
-                    
-                    if($resultado){
-                      while($linha=mysqli_fetch_assoc($resultado)){
-                        $nome=$linha['nome'];
-                        echo "<li class='collection-item'><div>".$nome."<a href='#!'' class='secondary-content tooltipped' data-position='bottom' data-delay='50' data-tooltip='Cadastrar-se'><i class='material-icons green-text'>add</i></a></div></li>";                        
-                      }
-                    }
-                    ?>
-                </ul>
-                <a class="right btn-floating waves-effect waves-light red tooltipped" data-position="bottom" data-delay="50" data-tooltip="Adicionar Instrumento" href="cadastroInstrumento.php" ><i class="material-icons">add</i></a>
-              </div>
+                  <div class="card">
+                    <div class="card-content">
+                      <p>Listas</p>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="card-tabs">
+                        <ul class="tabs tabs-fixed-width">
+                        <li class="tab"><a href="#instrumentos" class="active orange-text">Instrumentos</a></li>
+                        <li class="tab"><a class="orange-text" href="#professores">Professores</a></li>
+                      </ul>
+                    </div>
+                      <div class="card-content grey lighten-4">
+                        <div id="instrumentos" class="center"><a class="waves-effect waves-light btn" href="instrumento.php">Ver</a></div>
+                        <div id="professores" class="center"><a class="waves-effect waves-light btn" href="professores.php">Ver</a></div>
+                      </div>
+                  </div>
             </div>
           </div>
         </div>
@@ -100,7 +99,7 @@
         <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
         <script type="text/javascript" src="../js/materialize.min.js"></script>
         <script type="text/javascript">
-        	$(".button-collapse").sideNav();
+          $(".button-collapse").sideNav();
           $(document).ready(function(){
             $('.tooltipped').tooltip({delay: 50});
           });

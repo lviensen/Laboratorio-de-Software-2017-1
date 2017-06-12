@@ -27,6 +27,18 @@
 			return $bd->query("SELECT * FROM instrumento");
 			$bd->fechar();
 		}
+		function mostrarInstrumentoProf($id){
+			$bd = new ConexaoBD;
+			$bd->conectar();
+			return $bd->query("SELECT * from prof_inst, professor, instrumento WHERE prof_inst.idProf='$id' AND professor.id='$id' AND instrumento.id=prof_inst.idInst");
+			$bd->fechar();
+		}
+		function mostrarInstrumentoAlu($id){
+			$bd = new ConexaoBD;
+			$bd->conectar();
+			return $bd->query("SELECT * from alu_inst, aluno, instrumento WHERE alu_inst.idAlu='$id' AND aluno.id='$id' AND instrumento.id=alu_inst.idInst");
+			$bd->fechar();
+		}
 	}
 
 
