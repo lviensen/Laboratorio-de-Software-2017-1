@@ -63,7 +63,7 @@
                     <center>                                
                         <div class='row'>
                             <div class="col s4 offset-s4">
-                                <a href="home.php">Cancelar.</a>   
+                                <a href="home.php">Voltar</a>   
                             </div>                                   
                         </div>
                     </center> 

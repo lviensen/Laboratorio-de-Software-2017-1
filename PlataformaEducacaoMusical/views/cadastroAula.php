@@ -131,7 +131,7 @@
                     <center>                                
                         <div class='row'>
                             <div class="col s4 offset-s4">
-                                <a href="instrumentoTela.php">Cancelar.</a>   
+                                <a href="instrumentoTela.php">Voltar</a>   
                             </div>                                   
                         </div>
                     </center> 

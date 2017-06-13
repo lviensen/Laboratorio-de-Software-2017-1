@@ -76,7 +76,7 @@
               <div class="col-md-12">
                   <div class="card">
                     <div class="card-content">
-                      <p>Listas</p>
+                      <p>Localizar</p>
                     </div>
                     <div class="divider"></div>
                     <div class="card-tabs">
