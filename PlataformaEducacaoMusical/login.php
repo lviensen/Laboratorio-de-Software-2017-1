@@ -8,10 +8,22 @@
 
         <!--Let browser know website is optimized for mobile-->
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <script type="text/javascript" src="js/init.js"></script>
+        <script type="text/javascript" src="css/style.css"></script>
     </head>
    
     <body class="grey lighten-2">
+        <?php 
+            session_start();
+            
 
+            if (isset($_SESSION['verificador']) && isset($_SESSION['mensagem'])) { ?>
+                <div class="card-panel green lighten-4 green-text text-darken-4"><b>Success!</b> This alert box indicates a successful or positive action. <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a></div>
+
+        <?php 
+
+            }session_destroy();
+        ?>
 
         <div class="row">
 
