@@ -42,7 +42,8 @@
 					elseif ($tipo == "professor") {
 						$user->inserirPro();
 					}
-					
+					$_SESSION['mensagem']='Cadastro realizado com sucesso!';
+					$_SESSION['verificador']='SIM';
 					echo "<META HTTP-EQUIV='REFRESH' CONTENT='0; URL=../login.php'>";
 					
 				}		
