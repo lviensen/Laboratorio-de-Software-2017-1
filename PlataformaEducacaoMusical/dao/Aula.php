@@ -33,8 +33,8 @@
 		}
 		function inserirAulaInstProf(){
 			$bd = new ConexaoBD;
-			$sql = "INSERT INTO aula_prof_inst (idAula, idInst, idProf)
-			VALUES ('$this->idAula', '$this->idInst', '$this->idProf')";
+			$sql = "INSERT INTO aula_prof_inst (idAula, idProf, idInst)
+			VALUES ('$this->idAula', '$this->idProf', '$this->idInst')";
 			$bd->conectar();
 			$bd->conectar();
 			$bd->query($sql);

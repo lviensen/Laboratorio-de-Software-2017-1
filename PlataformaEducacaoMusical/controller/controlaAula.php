@@ -34,14 +34,18 @@
 					$aula->pdf = $pdf;
 					
 					$aula->inserirAula();
-					$idAula = $aula->maiorIdAula();
-					echo $idAula;
+					$resultado = $aula->maiorIdAula();
+					if($resultado){
+                      while($linha=mysqli_fetch_assoc($resultado)){
+                      	$idAula=$linha['id'];
+                      }
+                    }
 					$aula->idAula = $idAula;
 					$aula->idInst = $idInst;
 					$aula->idProf = $idProf;
 
 					$aula->inserirAulaInstProf();
-					echo "<META HTTP-EQUIV='REFRESH' CONTENT='0; URL=../views/instrumentoTela.php'>";
+					echo "<META HTTP-EQUIV='REFRESH' CONTENT='0; URL=../views/instrumentoTela.php?codigo=".$idInst."'>";
 					
 				}		
 
