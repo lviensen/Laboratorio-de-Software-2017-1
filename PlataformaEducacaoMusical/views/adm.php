@@ -8,22 +8,38 @@
 
         <!--Let browser know website is optimized for mobile-->
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script type="text/javascript" src="../js/materialize.min.js"></script>
     </head>
     <body >
         <!-- Dropdown Structure -->
         <ul id="dropdown1" class="dropdown-content">
-          <li><a href="#!" class="orange-text">Perfil</a></li>
           <li class="divider"></li>
-          <li><a href="../index.html" class="orange-text">Sair</a></li>
+          <li><a href="../controller/sair.php?id='<?php session_start(); echo $_SESSION['id'];?>" name="sair" class="orange-text">Sair</a></li>
+        </ul>
+        <ul id="dropdown2" class="dropdown-content">
+          <li class="divider"></li>
+          <form method="post" action="../controller/controla.php">
+            <li><button href="  class="orange-text">Sair</button></li>
+          </form>
         </ul>
         <div class="navbar-fixed">
             <nav class="amber darken-4 z-depth-3">
                 <div class="nav-wrapper">
                   <a href="#" class="brand-logo" style="margin-left: 5%;">Escola Musical</a>
+                  <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
                   <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li><a href="mensagensTela.php"><i class="material-icons right">email</i> Mensagens</a></li>
                     <li><a href="notificacaoTela.php"><i class="material-icons right">info_outline</i> Notificações</a></li>
                     <li><a href="#"><i class="material-icons right">library_music</i> Cursos</a></li>
-                    <li><a class="#" href="#!" data-activates="dropdown1"><?php session_start(); echo $_SESSION['nome']; ?> <i class="material-icons right">arrow_drop_down</i></a></li>
+                    <li><a class="dropdown-button" href="#!" data-activates="dropdown1"><?php  echo $_SESSION['nome']; ?> <i class="material-icons right">arrow_drop_down</i></a></li>
+                  </ul>
+                  <ul class="side-nav" id="mobile-demo">
+                    <li><a href="#"><i class="material-icons right">email</i> Mensagens</a></li>
+                    <li><a href="#"><i class="material-icons right">info_outline</i> Notificações</a></li>
+                    <li><a href="#"><i class="material-icons right">library_music</i> Cursos</a></li>
+                    <a class="btn tooltipped" data-position="bottom" data-delay="50" data-tooltip="I am tooltip">Hover me!</a>
+                    <li><a class="dropdown-button" href="#!" data-activates="dropdown2"><?php echo $_SESSION['nome']; ?> <i class="material-icons right">arrow_drop_down</i></a></li>
                   </ul>
                 </div>
             </nav>

@@ -7,7 +7,6 @@
         <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
         <link href="http://pingendo.github.io/pingendo-bootstrap/themes/default/bootstrap.css" rel="stylesheet" type="text/css">
     </head>
-	
 	<body>
 		<div>
 			<?php
@@ -20,7 +19,6 @@
 				
 
 				 if($operacao == "incluir"){
-
 
 					$nome = $_POST["nome"];
 					$email = $_POST["email"];
@@ -42,6 +40,7 @@
 					elseif ($tipo == "professor") {
 						$user->inserirPro();
 					}
+					
 					$_SESSION['mensagem']='Cadastro realizado com sucesso!';
 					$_SESSION['verificador']='SIM';
 					echo "<META HTTP-EQUIV='REFRESH' CONTENT='0; URL=../login.php'>";
@@ -68,7 +67,6 @@
 					
 					if($email==$emailBancoAdm){
 						if($senha==$senhaBancoAdm){
-							session_start();
 							$_SESSION['nome'] = $nomeBancoAdm;
 							$_SESSION['senha'] = $senhaBancoAdm;
 							$_SESSION['id'] = $idBancoAdm;
@@ -76,7 +74,6 @@
 							echo "<META HTTP-EQUIV='REFRESH' CONTENT='0; URL=../views/adm.php'>";
 						}
 						else{
-							session_start();
 							$_SESSION['mensagem']='Senha Incorreta!';
 							$_SESSION['local']='../login.php';
 
@@ -96,7 +93,6 @@
 							$descricaoBancoAlu = $linha['descricao'];
 						}
 						if($senha==$senhaBancoAlu){
-							session_start();
 							$_SESSION['nome'] = $nomeBancoAlu;
 							$_SESSION['senha'] = $senhaBancoAlu;
 							$_SESSION['id'] = $idBancoAlu;
@@ -116,7 +112,6 @@
 								$descricaoBancoPro = $linha['descricao'];
 							}
 							if($senha==$senhaBancoPro){
-								session_start();
 								$_SESSION['nome'] = $nomeBancoPro;
 								$_SESSION['senha'] = $senhaBancoPro;
 								$_SESSION['id'] = $idBancoPro;
@@ -126,7 +121,6 @@
 								echo "<META HTTP-EQUIV='REFRESH' CONTENT='0; URL=../views/home.php'>";
 							}
 							else{
-								session_start();
 								$_SESSION['mensagem']='Dados incorretos!';
 								$_SESSION['local']='../login.php';
 
@@ -163,6 +157,20 @@
 					echo "<meta http-equiv='refresh' 
 					content='0;url=../views/jquerymodal.php?numero=1'>";
 					
+				}
+				elseif ($operacao == "cadastrarProfInst") { 
+					$idProf = $_POST["idProf"];
+					$idInst = $_POST["idInst"];					
+					echo $idProf, $idInst;
+					$user->idInst = $idInst;
+					$user->idProf = $idProf;
+
+					$user->inserirProfInst();
+					
+					$_SESSION['mensagem']='Cadastro realizado com sucesso!';
+					$_SESSION['verificador']='SIM';
+					echo "<META HTTP-EQUIV='REFRESH' CONTENT='0; URL=../views/home.php'>";
+						
 				}
 			?>
 		</div>

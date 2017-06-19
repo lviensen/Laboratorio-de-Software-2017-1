@@ -8,18 +8,47 @@
 
         <!--Let browser know website is optimized for mobile-->
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <!--Import jQuery before materialize.js-->
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script type="text/javascript" src="../js/materialize.min.js"></script>
+        <script type="text/javascript">
+          $(document).ready(function(){
+          // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+          $('.modal').modal();
+        });
+        </script>
+
     </head>
+
     <body class="grey lighten-2">
+        <!-- Modal Structure
+        <div id="modal1" class="modal">
+          <div class="modal-content">
+            <h4>Cadastrar-se!</h4>
+            <p>Deseja realmente cadastrar-se a este instrumento?</p>
+          </div>
+          <div class="modal-footer">
+            <form method="post" action="../controller/controla.php">
+              <input type="hidden" name="operacao" value="cadastrarProfInst"/>
+              <input type="hidden" name="idInst" value="<?php //session_start(); echo $_SESSION['idInst']; ?>"/>
+              <input type="hidden" name="idProf" value="<?php// echo $_SESSION['id']; ?>"/>
+              <button class="modal-action modal-close waves-effect waves-green btn-flat green" type='submit' name='cadastrarProfInst'>Sim</button>
+            </form>
+            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat"> Não</a>
+          </div>
+        </div> -->
         <!-- Dropdown Structure -->
         <ul id="dropdown1" class="dropdown-content">
           <li><a href="perfil.php" class="orange-text">Perfil</a></li>
           <li class="divider"></li>
-          <li><a href="../index.html" class="orange-text">Sair</a></li>
+          <li><a href="../controller/sair.php?id='<?php session_start(); echo $_SESSION['id'];?>" name="sair" class="orange-text">Sair</a></li>
         </ul>
         <ul id="dropdown2" class="dropdown-content">
           <li><a href="perfil.php" class="orange-text">Perfil</a></li>
           <li class="divider"></li>
-          <li><a href="../index.html" class="orange-text">Sair</a></li>
+          <form method="post" action="../controller/controla.php">
+            <li><button href="  class="orange-text">Sair</button></li>
+          </form>
         </ul>
         <div class="navbar-fixed">
             <nav class="amber darken-4 z-depth-3">
@@ -30,7 +59,7 @@
                     <li><a href="mensagensTela.php"><i class="material-icons right">email</i> Mensagens</a></li>
                     <li><a href="notificacaoTela.php"><i class="material-icons right">info_outline</i> Notificações</a></li>
                     <li><a href="#"><i class="material-icons right">library_music</i> Cursos</a></li>
-                    <li><a class="dropdown-button" href="#!" data-activates="dropdown1"><?php session_start(); echo $_SESSION['nome']; ?> <i class="material-icons right">arrow_drop_down</i></a></li>
+                    <li><a class="dropdown-button" href="#!" data-activates="dropdown1"><?php  echo $_SESSION['nome']; ?> <i class="material-icons right">arrow_drop_down</i></a></li>
                   </ul>
                   <ul class="side-nav" id="mobile-demo">
                     <li><a href="#"><i class="material-icons right">email</i> Mensagens</a></li>
@@ -56,13 +85,18 @@
                     $inst = new Instrumento;
                     
                     $resultado = $inst->mostrarInstrumentoProf($_SESSION['id']);
-                    
+                    $num_linhas = mysqli_num_rows($resultado);
                     if($resultado){
                       while($linha=mysqli_fetch_assoc($resultado)){
                         $nome=$linha['nome'];
-                        echo "<li class='collection-item'><div>".$nome."<a href='./instrumentoTela.php'' class='secondary-content tooltipped' data-position='bottom' data-delay='50' data-tooltip='Visualizar Instrumento'><i class='material-icons orange-text'>visibility</i></a></div></li>";                        
+                        echo "<li class='collection-item'><div>".$nome."<a href='./instrumentoTela.php?codigo=".$linha['id']."' class='secondary-content tooltipped' data-position='bottom' data-delay='50' data-tooltip='Visualizar Instrumento'><i class='material-icons orange-text'>visibility</i></a></div></li>";                        
                       }
+                      if ($num_linhas==0) {
+                        echo "<li class='collection-item'><div>Você ainda não possui nenhum intrumento<a href='./instrumentoTela.php'' class='secondary-content tooltipped' </a></div></li>";
                     }
+                    }
+                    
+
                     ?>
                 </ul>
                 <a class="right btn-floating waves-effect waves-light red tooltipped" data-position="bottom" data-delay="50" data-tooltip="Adicionar Instrumento" href="cadastroInstrumento.php" ><i class="material-icons">add</i></a>
@@ -70,6 +104,7 @@
             </div>
           </div>
         </div>
+
         <div class="divider"></div>
         <div class="container">
           <div class="section">
@@ -84,7 +119,11 @@
                     if($resultado){
                       while($linha=mysqli_fetch_assoc($resultado)){
                         $nome=$linha['nome'];
-                        echo "<li class='collection-item'><div>".$nome."<a href='#!'' class='secondary-content tooltipped' data-position='bottom' data-delay='50' data-tooltip='Cadastrar-se'><i class='material-icons green-text'>add</i></a></div></li>";                        
+                        $id=$linha['id']; ?>
+                        <form method="post" action="../controller/controla.php">
+                          <input type="hidden" name="operacao" value="cadastrarProfInst"/>
+                          <input type="hidden" name="idInst" value="<?php echo $id; ?>"/>
+                          <input type="hidden" name="idProf" value=" <?php echo $_SESSION["id"]; ?>"/> <li class="collection-item"><div> <?php echo $nome; ?><button class="secondary-content tooltipped white" data-position="bottom" data-delay="50"  data-tooltip="Cadastrar-se" type="submit" name="cadastrarProfInst"><i class="material-icons green-text" >add</i></button></div></li></form> <?php                        
                       }
                     }
                     ?>
@@ -96,9 +135,6 @@
         </div>
         <div class="divider"></div>
 
-        <!--Import jQuery before materialize.js-->
-        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-        <script type="text/javascript" src="../js/materialize.min.js"></script>
         <script type="text/javascript">
         	$(".button-collapse").sideNav();
           $(document).ready(function(){

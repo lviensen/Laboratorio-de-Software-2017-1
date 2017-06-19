@@ -8,6 +8,7 @@
     </head>
 	
 	<body>
+		
 		<div>
 		<?php
 			$numero = $_GET["numero"];

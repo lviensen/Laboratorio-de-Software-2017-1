@@ -25,6 +25,14 @@
 			$bd->query($sql);
 			$bd->fechar();
 		}
+		function inserirProfInst(){ 
+			$bd = new ConexaoBD;
+			$sql = "INSERT INTO prof_inst (idProf, idInst)
+			VALUES ($this->idProf, $this->idInst)";
+			$bd->conectar();
+			$bd->query($sql);
+			$bd->fechar();
+		}		
 		function buscarUsuariosAdm($email){
 			$bd = new ConexaoBD;
 			$bd->conectar();

@@ -20,7 +20,7 @@
 		function mostrarAula(){
 			$bd = new ConexaoBD;
 			$bd->conectar();
-			return $bd->query("SELECT descricao, video, pdf
+			return $bd->query("SELECT id, descricao, video, pdf
 			FROM aula");
 			$bd->fechar();
 		}
@@ -31,7 +31,21 @@
 			FROM aula where id = 2");
 			$bd->fechar();
 		}
-		
+		function inserirAulaInstProf(){
+			$bd = new ConexaoBD;
+			$sql = "INSERT INTO aula_prof_inst (idAula, idInst, idProf)
+			VALUES ('$this->idAula', '$this->idInst', '$this->idProf')";
+			$bd->conectar();
+			$bd->conectar();
+			$bd->query($sql);
+			$bd->fechar();
+		}
+		function maiorIdAula(){ 
+			$bd = new ConexaoBD;
+			$bd->conectar();
+			return $bd->query("SELECT MAX(ID) as id FROM aula");
+			$bd->fechar();			
+		}
 	}
 
 

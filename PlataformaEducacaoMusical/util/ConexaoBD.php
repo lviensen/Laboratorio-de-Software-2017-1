@@ -25,9 +25,9 @@
 			mysqli_close($con);
 		}
 		
-		public function query($sql){
+		public function query($sql){ 
 			global $con;
-			$query = mysqli_query($con, $sql) or die (mysqli_error());
+			$query = mysqli_query($con, $sql) or die (mysqli_error()); 
 			return $query;
 		}
 	}

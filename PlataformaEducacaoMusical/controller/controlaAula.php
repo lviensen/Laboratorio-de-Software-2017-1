@@ -14,6 +14,7 @@
 
 				include '../dao/Aula.php';
 				$operacao = $_POST["operacao"];
+
 				session_start();
 
 				$aula = new Aula;
@@ -21,7 +22,8 @@
 
 				 if($operacao == "cadastroAula"){
 
-
+					$idInst = $_POST["idInst"];
+					$idProf = $_POST["idProf"];
 					$descricao = $_POST["descricao"];
 					$video = $_POST["video"];
 					$pdf = $_POST["pdf"];
@@ -32,7 +34,13 @@
 					$aula->pdf = $pdf;
 					
 					$aula->inserirAula();
-					
+					$idAula = $aula->maiorIdAula();
+					echo $idAula;
+					$aula->idAula = $idAula;
+					$aula->idInst = $idInst;
+					$aula->idProf = $idProf;
+
+					$aula->inserirAulaInstProf();
 					echo "<META HTTP-EQUIV='REFRESH' CONTENT='0; URL=../views/instrumentoTela.php'>";
 					
 				}		
