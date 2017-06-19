@@ -88,8 +88,12 @@
                     $num_linhas = mysqli_num_rows($resultado);
                     if($resultado){
                       while($linha=mysqli_fetch_assoc($resultado)){
-                        $nome=$linha['nome'];
-                        echo "<li class='collection-item'><div>".$nome."<a href='./instrumentoTela.php?codigo=".$linha['id']."' class='secondary-content tooltipped' data-position='bottom' data-delay='50' data-tooltip='Visualizar Instrumento'><i class='material-icons orange-text'>visibility</i></a></div></li>";                        
+                        $nome=$linha['nome']; 
+                        $idInst=$linha['idInst']; ?>
+                          <form method="post" action="./instrumentoTela.php">
+                          <input type="hidden" name="idInst" value="<?php echo $idInst; ?>">
+                          <input type="hidden" name="nomeInst" value="<?php echo $nome; ?>">
+                          <li class="collection-item"><div><?php echo $nome; ?><button  class="secondary-content tooltipped white" data-position="bottom" data-delay="50" data-tooltip="Visualizar Instrumento" type="submit"><i class="material-icons orange-text">visibility</i></button></div></li></form><?php ;                        
                       }
                       if ($num_linhas==0) {
                         echo "<li class='collection-item'><div>Você ainda não possui nenhum intrumento<a href='./instrumentoTela.php'' class='secondary-content tooltipped' </a></div></li>";

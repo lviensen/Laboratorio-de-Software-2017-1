@@ -14,7 +14,7 @@
         <ul id="dropdown1" class="dropdown-content">
           <li><a href="#!" class="orange-text">Perfil</a></li>
           <li class="divider"></li>
-          <li><a href="../controller/sair.php?id='<?php session_start(); $codigoInst = $_GET["codigo"]; echo $_SESSION['id'];?>" name="sair" class="orange-text">Sair</a></li>
+          <li><a href="../controller/sair.php?id='<?php session_start(); $codigoInst = $_POST["idInst"]; echo $_SESSION['id'];?>" name="sair" class="orange-text">Sair</a></li>
         </ul>
         <div class="navbar-fixed">
             <nav class="amber darken-4 z-depth-3">

@@ -39,6 +39,12 @@
 			return $bd->query("SELECT * from alu_inst, aluno, instrumento WHERE alu_inst.idAlu='$id' AND aluno.id='$id' AND instrumento.id=alu_inst.idInst");
 			$bd->fechar();
 		}
+		function dadosInstrumento($codigo){
+			$bd = new ConexaoBD;
+			$bd->conectar();
+			return $bd->query("SELECT nome FROM instrumento WHERE id='$codigo'");
+			$bd->fechar();
+		}
 	}
 
 

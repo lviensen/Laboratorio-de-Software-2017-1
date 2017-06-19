@@ -45,7 +45,7 @@
 					$aula->idProf = $idProf;
 
 					$aula->inserirAulaInstProf();
-					echo "<META HTTP-EQUIV='REFRESH' CONTENT='0; URL=../views/instrumentoTela.php?codigo=".$idInst."'>";
+					echo "<META HTTP-EQUIV='REFRESH' CONTENT='0; URL=../views/home.php'>";
 					
 				}		
 

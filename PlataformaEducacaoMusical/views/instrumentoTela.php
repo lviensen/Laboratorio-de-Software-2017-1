@@ -14,7 +14,7 @@
         <ul id="dropdown1" class="dropdown-content">
           <li><a href="perfil.php" class="orange-text">Perfil</a></li>
           <li class="divider"></li>
-          <li><a href="../controller/sair.php?id='<?php session_start(); $codigo = $_GET["codigo"]; echo $_SESSION['id'];?>" name="sair" class="orange-text">Sair</a></li>
+          <li><a href="../controller/sair.php?id='<?php session_start(); $codigo = $_POST['idInst']; echo $_SESSION['id'];?>" name="sair" class="orange-text">Sair</a></li>
         </ul>
         <div class="navbar-fixed">
             <nav class="amber darken-4 z-depth-3">
@@ -34,13 +34,14 @@
           <div class="section">
             <div class="row">
               <div class="col-md-12">
-                <h3 class="center">Violão</h3>
+                <h3 class="center"><?php echo  $_POST['nomeInst']; ?>
+                </h3>
               </div>
             </div>
             <div class="divider"></div>
                         <?php
                           include "../dao/Aula.php";
-                    
+                          
                           $aula = new Aula;
                           
                           $resultado = $aula->mostrarAula($_SESSION['id'], $codigo);
@@ -72,16 +73,15 @@
                           }  
                         ?>
           </div>
-        </div>
-        <?php 
-          
-         
-          echo " <div class='divider'></div>
-         <div class='fixed-action-btn'>
-          <a class='btn-floating btn-large red tooltipped' data-position='top' data-delay='50' data-tooltip='Cadastrar Aula' href='cadastroAula.php?codigo=".$codigo."'>
-            <i class='large material-icons'>add</i>
-          </a>
-        </div>";?>
+          <form method="post" action="./cadastroAula.php">
+            <input type="hidden" name="idInst" value="<?php echo $codigo; ?>">
+            </div> <div class='divider'></div>
+             <div class='fixed-action-btn'>
+              <button class='btn-floating btn-large red tooltipped' data-position='top' data-delay='50' data-tooltip='Cadastrar Aula' type="submit">
+                <i class='large material-icons'>add</i>
+              </button>
+            </div>
+          </form>
         <!--Import jQuery before materialize.js-->
         <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
         <script type="text/javascript" src="../js/materialize.min.js"></script>
