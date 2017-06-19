@@ -17,11 +17,10 @@
 		}
 
 
-		function mostrarAula(){
+		function mostrarAula($idProf, $idInst){
 			$bd = new ConexaoBD;
 			$bd->conectar();
-			return $bd->query("SELECT id, descricao, video, pdf
-			FROM aula");
+			return $bd->query("SELECT DISTINCT *, aula.descricao as aulaDescricao FROM instrumento, aula, professor, aula_prof_inst WHERE professor.id=aula_prof_inst.idProf and instrumento.id=aula_prof_inst.idInst AND professor.id='$idProf' AND aula_prof_inst.idProf='$idProf' AND instrumento.id='$idInst' and aula_prof_inst.idInst='$idInst' AND aula_prof_inst.idAula=aula.id");
 			$bd->fechar();
 		}
 		function mostrarAulaEspecifica(){

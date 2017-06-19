@@ -43,11 +43,11 @@
                     
                           $aula = new Aula;
                           
-                          $resultado = $aula->mostrarAula();
+                          $resultado = $aula->mostrarAula($_SESSION['id'], $codigo);
                           $contador=0;
                           if($resultado){
                             while($linha=mysqli_fetch_assoc($resultado)){
-                              $descricao=$linha['descricao'];
+                              $descricao=$linha['aulaDescricao'];
                               $contador=$contador+1;
                               echo "<div class='row'>
                                       <div class='col s12 m12'>
