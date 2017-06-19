@@ -49,26 +49,33 @@
                           if($resultado){
                             while($linha=mysqli_fetch_assoc($resultado)){
                               $descricao=$linha['aulaDescricao'];
-                              $contador=$contador+1;
-                              echo "<div class='row'>
-                                      <div class='col s12 m12'>
-                                        <div class='card horizontal'>
-                                          <div class='card-image'>
-                                            <h5 class='center'>   Aula ".$contador."</h5>
-                                          </div>
-                                          <div class='card-stacked'>
-                                            <div class='card-content'>
-                                              <p>".$descricao."</p>
-                                            </div>
-                                            <div class='card-action'>
-                                              <a href='aulaTela.php' class='btn waves-effect waves-light orange' type='submit'>Ver aula
-                                                <i class='material-icons right white-text'>visibility</i>
-                                              </a>
-                                            </div>
-                                          </div>
-                                        </div>
+                              $contador=$contador+1; 
+                              $aulaId=$linha['aulaId']; ?>
+                              <div class='row'>
+                                <div class='col s12 m12'>
+                                  <div class='card horizontal'>
+                                    <div class='card-image'>
+                                      <h5 class='center'>   Aula <?php echo $contador; ?></h5>
+                                    </div>
+                                    <div class='card-stacked'>
+                                      <div class='card-content'>
+                                        <p><?php echo $descricao; ?></p>
                                       </div>
-                                  </div>";                   
+                                      <form method="post" action="./aulaTela.php">
+                                        <input type="hidden" name="idInst" value="<?php echo $codigo; ?>">
+                                        <input type="hidden" name="nomeInst" value="<?php echo $_POST['nomeInst']; ?>">
+                                        <input type="hidden" name="aulaId" value="<?php echo $aulaId; ?>">
+                                        <input type="hidden" name="profId" value="<?php echo $_SESSION['id']; ?>">   
+                                        <div class='card-action'>
+                                          <button  class='btn waves-effect waves-light orange' type='submit'>Ver aula
+                                            <i class='material-icons right white-text'>visibility</i>
+                                          </button>
+                                        </div>
+                                      </form>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>"<?php  ;                  
                             }
                           }  
                         ?>

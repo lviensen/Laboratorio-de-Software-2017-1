@@ -42,8 +42,11 @@
 
             include '../dao/Aula.php';
             $aula = new Aula;
-                          
-            $resultado = $aula->mostrarAulaEspecifica();
+            $aulaId = $_POST['aulaId'];
+            $instId = $_POST['idInst'];
+            $instNome = $_POST['nomeInst'];
+            $profId = $_POST['profId'];              
+            $resultado = $aula->mostrarAulaEspecifica($profId, $instId, $aulaId);
             $contador=0;
             if($resultado){
               while($linha=mysqli_fetch_assoc($resultado)){
@@ -58,7 +61,7 @@
                         <div class='col s12 m12'>
                           <div class='card horizontal'>
                             <div class='card-image'>
-                              <h5 class='center'>Aula 2 </h5>
+                              <h5 class='center' style='margin-left: 50%;'>".$contador."</h5>
                             </div>
                             <div class='card-stacked'>
                               <div class='card-content'>
