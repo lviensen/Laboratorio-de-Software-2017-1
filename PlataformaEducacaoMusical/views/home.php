@@ -118,8 +118,8 @@
                   <li class="collection-header"><a href="#" class="brand-logo black-text">Outros Instrumentos</a></li>
                   <?php
                     
-                    $resultado = $inst->mostrarInstrumento();
-                    
+                    $resultado = $inst->mostrarInstrumentoOutros($_SESSION['id']);
+                    $num_linhas = mysqli_num_rows($resultado);
                     if($resultado){
                       while($linha=mysqli_fetch_assoc($resultado)){
                         $nome=$linha['nome'];
@@ -128,6 +128,9 @@
                           <input type="hidden" name="operacao" value="cadastrarProfInst"/>
                           <input type="hidden" name="idInst" value="<?php echo $id; ?>"/>
                           <input type="hidden" name="idProf" value=" <?php echo $_SESSION["id"]; ?>"/> <li class="collection-item"><div> <?php echo $nome; ?><button class="secondary-content tooltipped white" data-position="bottom" data-delay="50"  data-tooltip="Cadastrar-se" type="submit" name="cadastrarProfInst"><i class="material-icons green-text" >add</i></button></div></li></form> <?php                        
+                      }
+                      if ($num_linhas==0) {
+                        echo "<li class='collection-item'><div>Não há outros instrumentos<a href='./instrumentoTela.php'' class='secondary-content tooltipped' </a></div></li>";
                       }
                     }
                     ?>

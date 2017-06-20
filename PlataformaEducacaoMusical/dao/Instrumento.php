@@ -45,6 +45,12 @@
 			return $bd->query("SELECT nome FROM instrumento WHERE id='$codigo'");
 			$bd->fechar();
 		}
+		function mostrarInstrumentoOutros($idProf){
+			$bd = new ConexaoBD;
+			$bd->conectar();
+			return $bd->query("SELECT * FROM instrumento where instrumento.id not in (SELECT instrumento.id from prof_inst, professor, instrumento WHERE prof_inst.idProf='$idProf' AND professor.id='$idProf' AND instrumento.id=prof_inst.idInst)");
+			$bd->fechar();			
+		}
 	}
 
 
