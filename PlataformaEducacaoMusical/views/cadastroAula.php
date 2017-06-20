@@ -36,7 +36,7 @@
                 </div>
             </div>
             <div class="z-depth-1 grey lighten-4 row">
-                <form class="col s12 login-form" method="post" action="../controller/controlaAula.php">
+                <form class="col s12 login-form" method="post" action="../controller/controlaAula.php" enctype="multipart/form-data">
                     <div class='row'>
                         <div class='col s12'>
                         </div>
@@ -48,7 +48,7 @@
                         <div class="col s2"></div>
                         <div class="input-field col s12 m6 l8">
                             <i class="material-icons prefix">mode_edit</i>
-                            <textarea id="descricao" class="materialize-textarea" name="descricao"></textarea>
+                            <textarea id="descricao" class="materialize-textarea" name="descricao" required="required"></textarea>
                             <label for="textarea1">Escreva uma descrição sobre a aula.</label>
                         </div>
                         <div class="col s2"></div>
@@ -57,7 +57,7 @@
                         <div class="col s2"></div>
                         <div class="input-field col s12 m6 l8">
                             <i class="material-icons prefix">video_library</i>
-                            <input id="nome" type="text" class="validate" name="video">
+                            <input id="nome" type="text" class="validate" name="video" required="required">
                             <label for="icon_prefix">Endereço do vídeo</label>
                         </div>
                         <div class="col s2"></div>
@@ -68,10 +68,10 @@
                             <div class="file-field input-field">
                               <div class="btn orange lighten-1">
                                 <span>Arquivo</span>
-                                <input type="file">
+                                <input type="file" name="fileUpload">
                               </div>
                               <div class="file-path-wrapper">
-                                <input class="file-path validate" type="text" name="pdf">
+                                <input class="file-path validate" type="text" name="pdf" required="required" name="fileUpload">
                               </div>
                             </div>
                         </div>
@@ -87,7 +87,7 @@
                         <div class="col s2"></div>
                         <div class="input-field col s12 m6 l8 ">
                             <i class="material-icons prefix">assignment</i>
-                            <input id="cidade" type="text" class="validate" name="cidade">
+                            <input id="cidade" type="text" class="validate" name="pergunta">
                             <label for="icon_telephone">Pergunta</label>
                         </div>
                     <div class="col s2"></div>

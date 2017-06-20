@@ -65,7 +65,7 @@
                             </div>
                             <div class='card-stacked'>
                               <div class='card-content'>
-                                <p>".$descricao."</p>
+                                <p>".$pdf."</p>
                               </div>
                             </div>
                           </div>
@@ -82,7 +82,7 @@
                 <div class='row'>
                   <div class='col-md-12'>
                     <div class='card horizontal'>
-                      <a href='pdf/aula2.pdf' download class='black-text' href='#'><i class='material-icons'>library_books</i>  Baixar o material complementar - Aula 1</a>
+                      <a href='../pdf/".$pdf."' download class='black-text' href='#'><i class='material-icons'>library_books</i>  Baixar o material complementar - Aula 1</a>
                     </div>              
                   </div>            
                 </div>

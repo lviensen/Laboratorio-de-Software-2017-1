@@ -46,7 +46,7 @@
                         <div class="col s2"></div>
                         <div class="input-field col s12 m6 l8">
                             <i class="material-icons prefix">queue_music</i>
-                            <input id="nome" type="text" class="validate" name="nome">
+                            <input id="nome" type="text" class="validate" name="nome" required="required">
                             <label for="icon_prefix">Instrumento</label>
                         </div>
                         <div class="col s2"></div>
