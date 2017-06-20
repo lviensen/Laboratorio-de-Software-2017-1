@@ -97,7 +97,7 @@
                       }
                       if ($num_linhas==0) {
                         echo "<li class='collection-item'><div>Você ainda não possui nenhum intrumento<a href='./instrumentoTela.php'' class='secondary-content tooltipped' </a></div></li>";
-                    }
+                      }
                     }
                     
 

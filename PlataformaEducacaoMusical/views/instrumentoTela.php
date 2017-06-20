@@ -45,6 +45,7 @@
                           $aula = new Aula;
                           
                           $resultado = $aula->mostrarAula($_SESSION['id'], $codigo);
+                          $num_linhas = mysqli_num_rows($resultado);
                           $contador=0;
                           if($resultado){
                             while($linha=mysqli_fetch_assoc($resultado)){
@@ -75,8 +76,14 @@
                                     </div>
                                   </div>
                                 </div>
-                              </div>"<?php  ;                  
+                              </div>"<?php  ;
+
                             }
+                            if ($num_linhas==0) { ?>
+                              <div class="row">
+                                <div class="col s12 center"><span class="flow-text">Você ainda não possui aulas para este intrumento.</span>
+                              </div> <?php
+                            } 
                           }  
                         ?>
           </div>
