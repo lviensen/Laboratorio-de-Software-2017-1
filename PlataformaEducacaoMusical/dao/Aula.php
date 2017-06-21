@@ -52,6 +52,13 @@
 			$bd->query($sql2);
 			$bd->fechar();			
 		}
+		function editarAula(){
+			$bd = new ConexaoBD;
+			$sql = "UPDATE aula SET descricao='$this->descricao', video='$this->video', pdf='$this->pdf' WHERE aula.id ='$this->idAula';";
+			$bd->conectar();
+			$bd->query($sql);
+			$bd->fechar();			
+		}
 	}
 
 

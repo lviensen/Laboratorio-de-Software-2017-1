@@ -65,7 +65,7 @@
                             </div>
                             <div class='card-stacked'>
                               <div class='card-content'>
-                                <p>".$pdf."</p>
+                                <p>".$descricao."</p>
                               </div>
                             </div>
                           </div>
@@ -85,20 +85,28 @@
                       <a href='../pdf/".$pdf."' download class='black-text' href='#'><i class='material-icons'>library_books</i>  Baixar o material complementar - Aula 1</a>
                     </div>              
                   </div>            
-                </div>
-                <div class='row'>
-                  <div class='col-md-12'>
-                    <div class='card horizontal'>
-                      <a class='black-text' href='atividadeTela.php'><i class='small material-icons'>list</i>  Realizar atividades de conhecimento - Aula 1</a>
-                    </div>              
-                  </div>            
-                </div>
-                <div class='row'>
-                  <div class='col-md-4'>    
-                    <a class='btn waves-effect waves-light green' href='aulaTela.php' type='submit' name='action'>Editar aula
-                      <i class='material-icons right'>mode_edit</i>
-                    </a>
-                  </div>
+                </div>";
+                //<div class='row'>
+                  //<div class='col-md-12'>
+                    //<div class='card horizontal'>
+                      //<a class='black-text' href='atividadeTela.php'><i class='small material-icons'>list</i>  Realizar atividades de conhecimento - Aula 1</a>
+                    //</div>              
+                  //</div>            
+                //</div>
+                echo " <div class='row'>
+                  <form method='post' action='./editarAula.php'>
+                    <input type='hidden' name='idInst' value=".$instId.">
+                    <input type='hidden' name='idProf' value=".$profId.">
+                    <input type='hidden' name='idAula' value=".$aulaId.">
+                    <input type='hidden' name='descricaoAula' value=".$descricao.">
+                    <input type='hidden' name='videoAula' value=".$video.">
+                    <input type='hidden' name='pdfAula' value=".$pdf.">                    
+                    <div class='col-md-4'>    
+                      <button class='btn waves-effect waves-light green'  type='submit' name='action'>Editar aula
+                        <i class='material-icons right'>mode_edit</i>
+                      </button>
+                    </div>
+                  </form>
                   <div class='divider'></div>
                   <form method='post' action='../controller/controlaAula.php'>
                     <input type='hidden' name='operacao' value='excluirAula'/>  
@@ -110,6 +118,7 @@
                         <i class='material-icons right'>delete</i>
                       </button>
                     </div>  
+                  </form>
                 </div>            
                 </div>            
             </div>";

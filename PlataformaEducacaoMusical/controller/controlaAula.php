@@ -62,18 +62,36 @@
 					
 				}	
 				elseif ($operacao == "excluirAula") {
-						$idAula = $_POST['idAula'];
-						$idInst = $_POST['idInst'];
-						$idProf = $_POST['idProf'];
-						$aula->idAula = $idAula;
-						$aula->idInst = $idInst;
-						$aula->idProf = $idProf;
+					$idAula = $_POST['idAula'];
+					$idInst = $_POST['idInst'];
+					$idProf = $_POST['idProf'];
+					$aula->idAula = $idAula;
+					$aula->idInst = $idInst;
+					$aula->idProf = $idProf;
 
-						$aula->excluirAula();
+					$aula->excluirAula();
 
-						echo "<META HTTP-EQUIV='REFRESH' CONTENT='0; URL=../views/home.php'>";
-					}	
+					echo "<META HTTP-EQUIV='REFRESH' CONTENT='0; URL=../views/home.php'>";
+				}	
+				elseif ($operacao == "editarAula") {
+					$idAula = $_POST['idAula'];
+					$idInst = $_POST['idInst'];
+					$idProf = $_POST['idProf'];
+					$descricao = $_POST['descricao'];
+					$video = $_POST['video'];
+					$pdf = $_POST['pdf'];
 
+					$aula->idAula = $idAula;
+					$aula->idInst = $idInst;
+					$aula->idProf = $idProf;
+					$aula->descricao = $descricao;
+					$aula->video = $video;
+					$aula->pdf = $pdf;
+
+					$aula->editarAula();
+
+					echo "<META HTTP-EQUIV='REFRESH' CONTENT='0; URL=../views/home.php'>";					
+				}
 			?>
 		</div>
 	</body>	

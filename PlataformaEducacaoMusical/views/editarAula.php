@@ -32,23 +32,42 @@
        <div class="container" >
             <div class="section">
                 <div class="nav-wrapper">
-                    <h4 class="brand-logo center">Cadastro de aula</h4>
+                    <h4 class="brand-logo center">Edição de aula</h4>
                 </div>
             </div>
+            <?php
+                $idAula = $_POST['idAula'];
+                $idInst = $_POST['idInst'];
+                $idProf = $_POST['idProf'];
+                //$descricaoAula = $_POST['descricaoAula']; 
+                //$videoAula = $_POST['videoAula'];
+                //$pdfAula = $_POST['pdfAula'];
+                include '../dao/Aula.php';
+                $aula = new Aula;
+                $resultado = $aula->mostrarAulaEspecifica($idProf, $idInst, $idAula);
+                if($resultado){
+                    while($linha=mysqli_fetch_assoc($resultado)){
+                        $descricao=$linha['descricao'];
+                        $video=$linha['video'];
+                        $pdf=$linha['pdf'];
+                    }
+                }
+            ?>
             <div class="z-depth-1 grey lighten-4 row">
                 <form class="col s12 login-form" method="post" action="../controller/controlaAula.php" enctype="multipart/form-data">
                     <div class='row'>
                         <div class='col s12'>
                         </div>
                     </div>
-                    <input type="hidden" name="operacao" value="cadastroAula"/>
-                    <input type="hidden" name="idInst" value="<?php echo $codigoInst; ?>"/>
-                    <input type="hidden" name="idProf" value="<?php echo $_SESSION['id']; ?>"/>
+                    <input type="hidden" name="operacao" value="editarAula"/>
+                    <input type="hidden" name="idAula" value="<?php echo $idAula; ?>"/>
+                    <input type="hidden" name="idInst" value="<?php echo $idInst; ?>"/>
+                    <input type="hidden" name="idProf" value="<?php echo $_SESSION['id']; ?>"/>                    
                     <div class="row">
                         <div class="col s2"></div>
                         <div class="input-field col s12 m6 l8">
                             <i class="material-icons prefix">mode_edit</i>
-                            <textarea id="descricao" class="materialize-textarea" name="descricao" required="required"></textarea>
+                            <textarea id="descricao" class="materialize-textarea" name="descricao" required="required" ><?php echo $descricao; ?></textarea>
                             <label for="textarea1">Escreva uma descrição sobre a aula.</label>
                         </div>
                         <div class="col s2"></div>
@@ -57,7 +76,7 @@
                         <div class="col s2"></div>
                         <div class="input-field col s12 m6 l8">
                             <i class="material-icons prefix">video_library</i>
-                            <input id="nome" type="text" class="validate" name="video" required="required">
+                            <input id="nome" type="text" class="validate" name="video" required="required" value="<?php echo $video; ?>">
                             <label for="icon_prefix">Endereço do vídeo</label>
                         </div>
                         <div class="col s2"></div>
@@ -71,7 +90,7 @@
                                 <input type="file" name="fileUpload">
                               </div>
                               <div class="file-path-wrapper">
-                                <input class="file-path validate" type="text" name="pdf" required="required" name="fileUpload">
+                                <input class="file-path validate" type="text" name="pdf" required="required" name="fileUpload" value="<?php echo $pdf; ?>">
                               </div>
                             </div>
                         </div>
@@ -125,7 +144,7 @@
                     <center>                               
                         <div class='row'>
                             <div class="col s2 offset-s5">
-                                <button type='submit' name='cadastroAula' name="cadastroAula" class='col s12 btn btn-small waves-effect waves-light btn green'>Adicionar</button>
+                                <button type='submit' name='cadastroAula' name="editarAula" class='col s12 btn btn-small waves-effect waves-light btn green'>Concluir</button>
                             </div>
                         </div>
                     </center>
