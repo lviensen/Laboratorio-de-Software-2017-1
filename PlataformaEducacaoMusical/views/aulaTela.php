@@ -92,15 +92,33 @@
                       <a class='black-text' href='atividadeTela.php'><i class='small material-icons'>list</i>  Realizar atividades de conhecimento - Aula 1</a>
                     </div>              
                   </div>            
-                </div>  
-                <a class='btn waves-effect waves-light green' href='aulaTela.php' type='submit' name='action'>Próxima aula
-                  <i class='material-icons right'>send</i>
-                </a>          
+                </div>
+                <div class='row'>
+                  <div class='col-md-4'>    
+                    <a class='btn waves-effect waves-light green' href='aulaTela.php' type='submit' name='action'>Editar aula
+                      <i class='material-icons right'>mode_edit</i>
+                    </a>
+                  </div>
+                  <div class='divider'></div>
+                  <form method='post' action='../controller/controlaAula.php'>
+                    <input type='hidden' name='operacao' value='excluirAula'/>  
+                    <input type='hidden' name='idInst' value=".$instId.">
+                    <input type='hidden' name='idProf' value=".$profId.">
+                    <input type='hidden' name='idAula' value=".$aulaId.">
+                    <div class='col-md-4'>    
+                      <button class='btn waves-effect waves-light red' type='submit' name='action'>Excluir aula
+                        <i class='material-icons right'>delete</i>
+                      </button>
+                    </div>  
+                </div>            
                 </div>            
             </div>";
             }
           }
         ?>
+        <!-- <a class='btn waves-effect waves-light green' href='aulaTela.php' type='submit' name='action'>Próxima aula
+          <i class='material-icons right'>send</i>
+        </a> --> 
         <center>                                
           <div class='row'>
               <div class="col s4 offset-s4">

@@ -34,7 +34,6 @@
 			$sql = "INSERT INTO aula_prof_inst (idAula, idProf, idInst)
 			VALUES ('$this->idAula', '$this->idProf', '$this->idInst')";
 			$bd->conectar();
-			$bd->conectar();
 			$bd->query($sql);
 			$bd->fechar();
 		}
@@ -42,6 +41,15 @@
 			$bd = new ConexaoBD;
 			$bd->conectar();
 			return $bd->query("SELECT MAX(ID) as id FROM aula");
+			$bd->fechar();			
+		}
+		function excluirAula(){
+			$bd = new ConexaoBD;
+			$sql = "DELETE FROM aula_prof_inst WHERE aula_prof_inst.idAula='$this->idAula' AND aula_prof_inst.idProf='$this->idProf' AND aula_prof_inst.idInst='$this->idInst'";
+			$bd->conectar();
+			$bd->query($sql);
+			$sql2 = "DELETE FROM aula WHERE aula.id='$this->idAula'";
+			$bd->query($sql2);
 			$bd->fechar();			
 		}
 	}

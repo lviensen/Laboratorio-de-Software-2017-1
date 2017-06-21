@@ -76,7 +76,7 @@
                                     </div>
                                   </div>
                                 </div>
-                              </div>"<?php  ;
+                              </div><?php  ;
 
                             }
                             if ($num_linhas==0) { ?>

@@ -58,9 +58,21 @@
 
 
 
-					//echo "<META HTTP-EQUIV='REFRESH' CONTENT='0; URL=../views/home.php'>";
+					echo "<META HTTP-EQUIV='REFRESH' CONTENT='0; URL=../views/home.php'>";
 					
-				}		
+				}	
+				elseif ($operacao == "excluirAula") {
+						$idAula = $_POST['idAula'];
+						$idInst = $_POST['idInst'];
+						$idProf = $_POST['idProf'];
+						$aula->idAula = $idAula;
+						$aula->idInst = $idInst;
+						$aula->idProf = $idProf;
+
+						$aula->excluirAula();
+
+						echo "<META HTTP-EQUIV='REFRESH' CONTENT='0; URL=../views/home.php'>";
+					}	
 
 			?>
 		</div>
