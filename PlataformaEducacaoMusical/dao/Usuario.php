@@ -80,6 +80,12 @@
 			email='$this->email', cidade='$this->cidade', senha='$this->senha', descricao='$this->descricao' WHERE id='$this->id'");
 			$bd->fechar();
 		}
+		function mostrarAlunosInstrumento($idProf, $idInst){
+			$bd = new ConexaoBD;
+			$bd->conectar();
+			return $bd->query("SELECT * FROM aluno, matricula WHERE matricula.idProf='$idProf' AND matricula.idInst='$idInst' AND matricula.idAlu=aluno.id");
+			$bd->fechar();			
+		}
 	}
 
 
