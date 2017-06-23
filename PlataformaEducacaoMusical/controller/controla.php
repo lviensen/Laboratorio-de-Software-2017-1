@@ -153,7 +153,11 @@
 					
 					$_SESSION['mensagem']='Usuário alterado com sucesso';
 					$_SESSION['local']='perfil.php';
-					
+					$_SESSION['nome'] = $nome;
+					$_SESSION['cidade'] = $cidade;
+					$_SESSION['email'] = $email;
+					$_SESSION['senha'] = $senha;
+					$_SESSION['descricao'] = $descricao;
 					echo "<meta http-equiv='refresh' 
 					content='0;url=../views/jquerymodal.php?numero=1'>";
 					
