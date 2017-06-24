@@ -164,8 +164,7 @@
 				}
 				elseif ($operacao == "cadastrarProfInst") { 
 					$idProf = $_POST["idProf"];
-					$idInst = $_POST["idInst"];					
-					echo $idProf, $idInst;
+					$idInst = $_POST["idInst"];	
 					$user->idInst = $idInst;
 					$user->idProf = $idProf;
 
@@ -175,6 +174,19 @@
 					$_SESSION['verificador']='SIM';
 					echo "<META HTTP-EQUIV='REFRESH' CONTENT='0; URL=../views/home.php'>";
 						
+				}
+				elseif ($operacao == "cadastroAlunoInstrumentoProfessor") {
+					$idAlu = $_POST['idAlu'];
+					$idProf = $_POST['idProf'];
+					$idInst = $_POST['idInst'];
+
+					$user->idAlu = $idAlu;
+					$user->idProf = $idProf;
+					$user->idInst = $idInst;
+
+					$user->inserirAlunoInstrumentoProfessor();
+
+					echo "<META HTTP-EQUIV='REFRESH' CONTENT='0; URL=../views/instrumentoProfessores.php?id=$idInst'>";				
 				}
 			?>
 		</div>

@@ -64,7 +64,7 @@
 			$bd = new ConexaoBD;
 
 			$bd->conectar();
-			return $bd->query("SELECT DISTINCT professor.nome as nomeProf FROM professor, prof_inst, instrumento WHERE instrumento.id='$codigo' and prof_inst.idInst='$codigo' and prof_inst.idInst=instrumento.id and prof_inst.idProf=professor.id");
+			return $bd->query("SELECT DISTINCT professor.nome as nomeProf, professor.id as idProf FROM professor, prof_inst, instrumento WHERE instrumento.id='$codigo' and prof_inst.idInst='$codigo' and prof_inst.idInst=instrumento.id and prof_inst.idProf=professor.id");
 			$bd->fechar();
 		}		
 		function mostrarUsuarioAlterar($id){
@@ -91,6 +91,13 @@
 			$bd->conectar();
 			return $bd->query("SELECT nome FROM instrumento WHERE id='$codigo'");
 			$bd->fechar();
+		}
+		function inserirAlunoInstrumentoProfessor(){
+			$bd = new ConexaoBD;
+			$sql = "INSERT INTO matricula (idAlu, idProf, idInst, nota, data, idMatri) VALUES ('$this->idAlu', '$this->idProf', '$this->idInst', NULL, CURRENT_TIMESTAMP, NULL)";
+			$bd->conectar();
+			$bd->query($sql);
+			$bd->fechar();			
 		}
 	}
 

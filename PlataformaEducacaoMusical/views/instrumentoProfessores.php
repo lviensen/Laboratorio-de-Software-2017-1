@@ -8,6 +8,11 @@
 
         <!--Let browser know website is optimized for mobile-->
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <style>
+          #botaoVisualizar{
+            border: none;
+          }
+        </style> 
     </head>
     <body class="grey lighten-2">
         <!-- Dropdown Structure -->
@@ -80,9 +85,18 @@
                     
                     if($resultado){
                       while($linha=mysqli_fetch_assoc($resultado)){
-                        $nome=$linha['nomeProf'];
-                        echo "<li class='collection-item'><div>".$nome."<a href='./instrumentoTela.php'' class='secondary-content tooltipped' data-position='bottom' data-delay='50' data-tooltip='Cadastrar-se'><i class='material-icons green-text'>add </i> </a><a href='./perfil.php'' class='secondary-content tooltipped' data-position='bottom' data-delay='50' data-tooltip='Ver Perfil'><i class='material-icons orange-text'>visibility</i></a><a href='./instrumentoTela.php'' class='secondary-content tooltipped' data-position='bottom' data-delay='50' data-tooltip='Pontuação'> <i class='material-icons yellow-text '>star</i></a></div></li>";     
-                      }
+                        $nome=$linha['nomeProf']; ?>
+                        <form method="post" action="../controller/controla.php">
+                          <input type="hidden" name="operacao" value="cadastroAlunoInstrumentoProfessor">
+                          <input type="hidden" name="idInst" value="<?php echo $codigo; ?>">
+                          <input type="hidden" name="idProf" value="<?php echo $linha['idProf']; ?>">    
+                          <input type="hidden" name="idAlu" value="<?php echo $_SESSION['id']; ?>">                      
+                          <li class='collection-item'>
+                            <div><?php echo $nome; ?>                         
+                              <button type="submit" class='secondary-content tooltipped white' id="botaoVisualizar" data-position='bottom' data-delay='50' data-tooltip='Cadastrar-se'><i class='material-icons green-text'>add </i> </button> </form>
+                          <a href='./perfil.php'' class='secondary-content tooltipped' data-position='bottom' data-delay='50' data-tooltip='Ver Perfil'><i class='material-icons orange-text'>visibility</i></a>
+                          <a href='./instrumentoTela.php'' class='secondary-content tooltipped' data-position='bottom' data-delay='50' data-tooltip='Pontuação'> <i class='material-icons yellow-text '>star</i></a></div></li>   
+                      <?php } 
                     }
                     ?>
                 </ul>
