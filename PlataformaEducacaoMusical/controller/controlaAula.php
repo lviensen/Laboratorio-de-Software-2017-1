@@ -92,6 +92,23 @@
 
 					echo "<META HTTP-EQUIV='REFRESH' CONTENT='0; URL=../views/home.php'>";					
 				}
+				elseif ($operacao == "incrementarAula") {
+					$idAula = $_POST['idAula'];
+					$idInst = $_POST['idInst'];
+					$idProf = $_POST['idProf'];
+					$idAlu = $_POST['idAlu'];
+					$idMatri = $_POST['idMatri'];
+
+					$aula->idAula = $idAula;
+					$aula->idInst = $idInst;
+					$aula->idProf = $idProf;
+					$aula->idAlu = $idAlu;
+					$aula->idMatri = $idMatri;
+
+					$aula->incrementarAula();
+
+					echo "<META HTTP-EQUIV='REFRESH' CONTENT='0; URL=../views/homeAluno.php'>";
+				}
 			?>
 		</div>
 	</body>	

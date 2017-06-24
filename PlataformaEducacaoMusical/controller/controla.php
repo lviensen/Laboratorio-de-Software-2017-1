@@ -186,7 +186,7 @@
 
 					$user->inserirAlunoInstrumentoProfessor();
 
-					echo "<META HTTP-EQUIV='REFRESH' CONTENT='0; URL=../views/instrumentoProfessores.php?id=$idInst'>";				
+					echo "<META HTTP-EQUIV='REFRESH' CONTENT='0; URL=../views/homeAluno.php'>";				
 				}
 			?>
 		</div>

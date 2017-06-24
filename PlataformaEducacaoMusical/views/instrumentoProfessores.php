@@ -49,7 +49,7 @@
         </div>
         <?php
           include "../dao/Usuario.php";
-          $codigo = $_GET['id'];
+          $codigo = $_POST['idInst'];
           $i = new Usuario;
           $resultado2 = $i->dadosInstrumento($codigo);
           if ($resultado2) {

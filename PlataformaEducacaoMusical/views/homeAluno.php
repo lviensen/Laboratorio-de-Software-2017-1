@@ -8,6 +8,15 @@
 
         <!--Let browser know website is optimized for mobile-->
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <!--Import jQuery before materialize.js-->
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script type="text/javascript" src="../js/materialize.min.js"></script>
+        <script type="text/javascript">
+          $(".button-collapse").sideNav();
+          $(document).ready(function(){
+            $('.tooltipped').tooltip({delay: 50});
+          });
+        </script>
         <style>
           #botaoVisualizar{
             border: none;
@@ -61,16 +70,24 @@
                     $inst = new Instrumento;
                     
                     $resultado = $inst->mostrarInstrumentoAlu($_SESSION['id']);
-                    
+                    $num_linhas = mysqli_num_rows($resultado);
                     if($resultado){
                       while($linha=mysqli_fetch_assoc($resultado)){
-                        $nomeInst=$linha['nomeInst']; 
+                        $nomeInst=$linha['nome']; 
                         $nomeProf=$linha['nomeProf'];
+                        $idProf=$linha['idProf'];
+                        $idInst=$linha['idInst'];
                         ?>
                         <form method="post" action="./instrumentoTelaAluno.php">
-                          <input type="hidden" name="nomeInst" value="<?php echo $nome; ?>">
-                          <?php echo "<li class='collection-item'><div>".$nomeInst."  (".$nomeProf.")<button type='submit' id='botaoVisualizar' class='secondary-content tooltipped white' data-position='bottom' data-delay='50' data-tooltip='Visualizar Instrumento'><i class='material-icons orange-text'>visibility</i></button></div></li>";                        
+                          <input type="hidden" name="nomeInst" value="<?php echo $nomeInst; ?>">
+                          <input type="hidden" name="nomeProf" value="<?php echo $nomeProf; ?>">
+                          <input type="hidden" name="idInst" value="<?php echo $idInst; ?>">
+                          <input type="hidden" name="idProf" value="<?php echo $idProf; ?>">
+                          <li class="collection-item"><div><?php echo $nomeInst; ?>  (<?php echo $nomeProf; ?>)<button type="submit" id="botaoVisualizar" class="secondary-content tooltipped white" data-position="bottom" data-delay="50" data-tooltip="Visualizar Instrumento"><i class="material-icons orange-text">visibility</i></button></div></li> </form><?php                    
                       }
+                      if ($num_linhas==0) {
+                        echo "<li class='collection-item'><div>Você ainda não possui nenhum intrumento<a href='./instrumentoTela.php'' class='secondary-content tooltipped' </a></div></li>";
+                      }                      
                     }
                     ?>
                 </ul>
@@ -103,15 +120,5 @@
           </div>
         </div>
         <div class="divider"></div>
-
-        <!--Import jQuery before materialize.js-->
-        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-        <script type="text/javascript" src="../js/materialize.min.js"></script>
-        <script type="text/javascript">
-          $(".button-collapse").sideNav();
-          $(document).ready(function(){
-            $('.tooltipped').tooltip({delay: 50});
-          });
-        </script>
     </body>
 </html>

@@ -8,6 +8,11 @@
 
         <!--Let browser know website is optimized for mobile-->
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <style>
+          #botaoVisualizar{
+            border: none;
+          }
+        </style>
     </head>
     <body class="grey lighten-2">
         <!-- Dropdown Structure -->
@@ -73,8 +78,11 @@
                     if($resultado){
                       while($linha=mysqli_fetch_assoc($resultado)){
                         $nome=$linha['nome'];
-                        $idInstrumento=$linha['id'];
-                        echo "<li class='collection-item'><div>".$nome."<a href='./InstrumentoProfessores.php?id=".$linha['id']."'' class='secondary-content tooltipped' data-position='bottom' data-delay='50' data-tooltip='Ver Professores'><i class='material-icons orange-text'>visibility</i> </a></div></li>";                        
+                        $idInstrumento=$linha['id']; ?>
+                        <form method="post" action="./InstrumentoProfessores.php">
+                          <input type="hidden" name="nomeInst" value="<?php echo $nome; ?>">
+                          <input type="hidden" name="idInst" value="<?php echo $idInstrumento; ?>">
+                          <li class="collection-item"><div><?php echo $nome; ?><button type="submit" id="botaoVisualizar"  class="secondary-content tooltipped white" data-position="bottom" data-delay="50" data-tooltip="Ver Professores"><i class="material-icons orange-text">visibility</i> </button></div></li></form> <?php                        
                       }
                     }
                     ?>

@@ -59,6 +59,25 @@
 			$bd->query($sql);
 			$bd->fechar();			
 		}
+		function mostrarAulaEspecificaAluno($idAula){
+			$bd = new ConexaoBD;
+			$bd->conectar();
+			return $bd->query("SELECT DISTINCT * FROM aula WHERE aula.id='$idAula'");
+			$bd->fechar();			
+		}
+		function incrementarAula(){
+			$bd = new ConexaoBD;
+			$sql = "UPDATE matricula SET aula_num=aula_num+1 WHERE matricula.idMatri='$this->idMatri'";
+			$bd->conectar();
+			$bd->query($sql);
+			$bd->fechar();				
+		}
+		function buscarMatricula($idAlu, $idProf, $idInst){
+			$bd = new ConexaoBD;
+			$bd->conectar();
+			return $bd->query("SELECT *, matricula.idMatri as idMatri FROM matricula, professor, instrumento, aluno WHERE professor.id='$idProf' AND professor.id=matricula.idProf AND aluno.id='$idAlu' AND matricula.idAlu=aluno.id AND instrumento.id='$idInst' AND instrumento.id=matricula.idInst");
+			$bd->fechar();				
+		}
 	}
 
 

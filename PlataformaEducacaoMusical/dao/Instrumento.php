@@ -36,7 +36,7 @@
 		function mostrarInstrumentoAlu($id){
 			$bd = new ConexaoBD;
 			$bd->conectar();
-			return $bd->query("SELECT DISTINCT *, aluno.nome as nomeAlu, professor.nome as nomeProf, instrumento.nome as nomeInst FROM aluno, professor, instrumento, matricula WHERE aluno.id=matricula.idAlu AND aluno.id='$id' AND matricula.idAlu='$id' AND matricula.idProf=professor.id AND matricula.idInst=instrumento.id");
+			return $bd->query("SELECT DISTINCT *, matricula.idProf as idProf, matricula.idInst as idInst, professor.nome as nomeProf, instrumento.nome as nomeInst  FROM aluno, professor, instrumento, matricula WHERE aluno.id=matricula.idAlu AND aluno.id='$id' AND matricula.idAlu='$id' AND matricula.idProf=professor.id AND matricula.idInst=instrumento.id");
 			$bd->fechar();
 		}
 		function dadosInstrumento($codigo){
