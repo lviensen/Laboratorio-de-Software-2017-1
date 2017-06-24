@@ -71,11 +71,14 @@
                     $idProf = $_POST['idProf'];
 
                     $resultado = $u->mostrarAlunosInstrumento($idProf, $idInst);
-                    
+                    $num_linhas = mysqli_num_rows($resultado);
                     if($resultado){
                       while($linha=mysqli_fetch_assoc($resultado)){
                         $nome=$linha['nome'];
                         echo "<li class='collection-item'><div>".$nome."<a href='./perfil.php'' class='secondary-content tooltipped' data-position='bottom' data-delay='50' data-tooltip='Ver Perfil'><i class='material-icons orange-text'>visibility</i></a></div></li>";     
+                      }
+                      if ($num_linhas==0) {
+                        echo "<li class='collection-item'><div>Você ainda não possui nenhum intrumento<a href='./instrumentoTela.php'' class='secondary-content tooltipped' </a></div></li>";
                       }
                     }
                     ?>

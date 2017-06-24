@@ -17,13 +17,11 @@
           $('.modal').modal();
         });
         </script>
-
         <style>
-            #botaoVisualizar{
-                border: none;
-            }
+          #botaoVisualizar{
+            border: none;
+          }
         </style>
-
     </head>
 
     <body class="grey lighten-2">
@@ -99,7 +97,7 @@
                           <form method="post" action="./instrumentoTela.php">
                           <input type="hidden" name="idInst" value="<?php echo $idInst; ?>">
                           <input type="hidden" name="nomeInst" value="<?php echo $nome; ?>">
-                          <li class="collection-item "><div><?php echo $nome; ?><button  id="botaoVisualizar" class="secondary-content tooltipped white btn-link data-position="bottom" data-delay="50" data-tooltip="Visualizar Instrumento" type="submit"><i class="material-icons orange-text ">visibility</i></button></div></li></form><?php ;                        
+                          <li class="collection-item"><div><?php echo $nome; ?><button id="botaoVisualizar"   class="secondary-content tooltipped white" data-position="bottom" data-delay="50" data-tooltip="Visualizar Instrumento" type="submit"><i class="material-icons orange-text">visibility</i></button></div></li></form><?php ;                        
                       }
                       if ($num_linhas==0) {
                         echo "<li class='collection-item'><div>Você ainda não possui nenhum intrumento<a href='./instrumentoTela.php'' class='secondary-content tooltipped' </a></div></li>";
@@ -133,7 +131,7 @@
                         <form method="post" action="../controller/controla.php">
                           <input type="hidden" name="operacao" value="cadastrarProfInst"/>
                           <input type="hidden" name="idInst" value="<?php echo $id; ?>"/>
-                          <input type="hidden" name="idProf" value=" <?php echo $_SESSION["id"]; ?>"/> <li class="collection-item"><div> <?php echo $nome; ?><button id="botaoVisualizar" class="secondary-content tooltipped white" data-position="bottom" data-delay="50"  data-tooltip="Cadastrar-se" type="submit" name="cadastrarProfInst"><i class="material-icons green-text" >add</i></button></div></li></form> <?php                        
+                          <input type="hidden" name="idProf" value=" <?php echo $_SESSION["id"]; ?>"/> <li class="collection-item"><div> <?php echo $nome; ?><button id="botaoVisualizar"  class="secondary-content tooltipped white" data-position="bottom" data-delay="50"  data-tooltip="Cadastrar-se" type="submit" name="cadastrarProfInst"><i class="material-icons green-text" >add</i></button></div></li></form> <?php                        
                       }
                       if ($num_linhas==0) {
                         echo "<li class='collection-item'><div>Não há outros instrumentos<a href='./instrumentoTela.php'' class='secondary-content tooltipped' </a></div></li>";

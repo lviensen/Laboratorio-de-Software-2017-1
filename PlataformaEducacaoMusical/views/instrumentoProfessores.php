@@ -42,10 +42,21 @@
                 </div>
             </nav>
         </div>
+        <?php
+          include "../dao/Usuario.php";
+          $codigo = $_GET['id'];
+          $i = new Usuario;
+          $resultado2 = $i->dadosInstrumento($codigo);
+          if ($resultado2) {
+            while($linha=mysqli_fetch_assoc($resultado2)){
+              $nomeInstrumento=$linha['nome'];
+            }
+          }
+        ?> 
         <div class="divider"></div>
         <div class="section">
             <div class="nav-wrapper">
-                <h4 class="brand-logo center">Lista de Professores de Violão</h4>
+                <h4 class="brand-logo center">Lista de Professores de <?php echo $nomeInstrumento; ?></h4>
             </div>
         </div>
         <div class="container">
@@ -64,11 +75,7 @@
                   </li>
 
                   <?php
-                    include "../dao/Usuario.php";
-                    
-                    $codigo = $_GET["id"];
                     $u = new Usuario;
-
                     $resultado = $u->mostrarProfessorInstrumento($codigo);
                     
                     if($resultado){

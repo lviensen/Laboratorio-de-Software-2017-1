@@ -8,6 +8,11 @@
 
         <!--Let browser know website is optimized for mobile-->
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <style>
+          #botaoVisualizar{
+            border: none;
+          }
+        </style>
     </head>
     <body class="grey lighten-2">
         <!-- Dropdown Structure -->
@@ -59,8 +64,10 @@
                     
                     if($resultado){
                       while($linha=mysqli_fetch_assoc($resultado)){
-                        $nome=$linha['nome'];
-                        echo "<li class='collection-item'><div>".$nome."<a href='./instrumentoTelaAluno.php'' class='secondary-content tooltipped' data-position='bottom' data-delay='50' data-tooltip='Visualizar Instrumento'><i class='material-icons orange-text'>visibility</i></a></div></li>";                        
+                        $nome=$linha['nome']; ?>
+                        <form method="post" action="./instrumentoTelaAluno.php">
+                          <input type="hidden" name="nomeInst" value="<?php echo $nome; ?>">
+                          <?php echo "<li class='collection-item'><div>".$nome."<button type='submit' id='botaoVisualizar' class='secondary-content tooltipped' data-position='bottom' data-delay='50' data-tooltip='Visualizar Instrumento'><i class='material-icons orange-text'>visibility</i></button></div></li>";                        
                       }
                     }
                     ?>

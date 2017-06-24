@@ -86,6 +86,12 @@
 			return $bd->query("SELECT * FROM aluno, matricula WHERE matricula.idProf='$idProf' AND matricula.idInst='$idInst' AND matricula.idAlu=aluno.id");
 			$bd->fechar();			
 		}
+		function dadosInstrumento($codigo){
+			$bd = new ConexaoBD;
+			$bd->conectar();
+			return $bd->query("SELECT nome FROM instrumento WHERE id='$codigo'");
+			$bd->fechar();
+		}
 	}
 
 
