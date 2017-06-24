@@ -64,10 +64,12 @@
                     
                     if($resultado){
                       while($linha=mysqli_fetch_assoc($resultado)){
-                        $nome=$linha['nome']; ?>
+                        $nomeInst=$linha['nomeInst']; 
+                        $nomeProf=$linha['nomeProf'];
+                        ?>
                         <form method="post" action="./instrumentoTelaAluno.php">
                           <input type="hidden" name="nomeInst" value="<?php echo $nome; ?>">
-                          <?php echo "<li class='collection-item'><div>".$nome."<button type='submit' id='botaoVisualizar' class='secondary-content tooltipped' data-position='bottom' data-delay='50' data-tooltip='Visualizar Instrumento'><i class='material-icons orange-text'>visibility</i></button></div></li>";                        
+                          <?php echo "<li class='collection-item'><div>".$nomeInst."  (".$nomeProf.")<button type='submit' id='botaoVisualizar' class='secondary-content tooltipped white' data-position='bottom' data-delay='50' data-tooltip='Visualizar Instrumento'><i class='material-icons orange-text'>visibility</i></button></div></li>";                        
                       }
                     }
                     ?>
