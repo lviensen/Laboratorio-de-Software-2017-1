@@ -99,6 +99,12 @@
 			$bd->query($sql);
 			$bd->fechar();			
 		}
+		function avaliar(){
+			$bd = new ConexaoBD;
+			$bd->conectar();
+			$bd->query("UPDATE matricula SET nota='$this->nota' WHERE matricula.idMatri='$this->idMatri'");
+			$bd->fechar();			
+		}
 	}
 
 

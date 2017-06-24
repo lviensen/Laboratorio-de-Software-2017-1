@@ -11,13 +11,73 @@
         <!--Import jQuery before materialize.js-->
         <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
         <script type="text/javascript" src="../js/materialize.min.js"></script>
+        <script type="text/javascript">
+          $(document).ready(function(){
+            // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
+            $('.modal').modal();
+          });
+        </script>
     </head>
+    <?php
+      session_start();
+      include "../dao/Aula.php";
+      $idProf = $_POST['idProf'];
+      $idInst = $_POST['idInst'];
+      $aula = new Aula;
+      $resultado2 = $aula->buscarMatricula($_SESSION['id'], $idProf, $idInst);
+      if($resultado2){
+        while($linha=mysqli_fetch_assoc($resultado2)){  
+          $idMatri=$linha['idMatri'];
+          $aula_num=$linha['aula_num'];
+        }
+      }        
+    ?>    
+
+    <!-- Modal Structure -->
+    <div id="modalAvaliacao" class="modal">
+      <form method="post" action="../controller/controla.php">
+        <div class="modal-content">
+          <h4 class="center">Avaliação de Professor</h4>
+          <p></p>
+          <p>Avalie seu professor:</p>       
+            <div class="row">
+              <div class="col s7">   
+                <input type="hidden" name="idMatri" value="<?php echo $idMatri; ?>">
+                <input type="hidden" name="operacao" value="avaliar"/>          
+                <p>
+                  <input name="nota" type="radio" id="test1" value="5"/>
+                  <label for="test1">Ótimo</label>
+                </p>
+                <p>
+                  <input name="nota" type="radio" id="test2" value="4" />
+                  <label for="test2">Muito bom</label>
+                </p>
+                <p>
+                  <input class="with-gap" name="nota" type="radio" id="test3" value="3" />
+                  <label for="test3">Bom</label>
+                </p>
+                <p>
+                  <input name="nota" type="radio" id="test4" value="2"/>
+                  <label for="test4">Razoável</label>
+                </p>
+                <p>
+                  <input class="with-gap" name="nota" type="radio" id="test5"  value="1"/>
+                  <label for="test5">Ruim</label>
+                </p>             
+              </div>
+            </div>          
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class='btn waves-effect waves-light orange'>Confirmar</button>
+        </div>
+      </form>
+    </div>
     <body class="grey lighten-2">
         <!-- Dropdown Structure -->
         <ul id="dropdown1" class="dropdown-content">
           <li><a href="perfil.php" class="orange-text">Perfil</a></li>
           <li class="divider"></li>
-          <li><a href="../controller/sair.php?id='<?php session_start(); echo $_SESSION['id'];?>" name="sair" class="orange-text">Sair</a></li>
+          <li><a href="../controller/sair.php?id='<?php  echo $_SESSION['id'];?>" name="sair" class="orange-text">Sair</a></li>
         </ul>
         <div class="navbar-fixed">
             <nav class="amber darken-4 z-depth-3">
@@ -31,21 +91,25 @@
                   </ul>
                 </div>
             </nav>
-        </div>
+        </div> 
         <div class="divider"></div>
         <div class="container">
           <div class="section">
             <div class="row">
-              <div class="col-md-12">
-                <h3 class="center"></h3>
+              <div class="col s7">
+                <h3 class="right"><?php echo $_POST['nomeInst']; ?></h3>
               </div>
+              <?php  if ($aula_num >= 5) {
+                echo "              
+                <div class='col s5' >
+                  <form method='post' action='./aulaTelaAluno.php'>
+                    <a class='waves-effect waves-light btn right blue' href='#modalAvaliacao'>Avaliar Professor<i class='material-icons right'>send</i></a>
+                </div> ";
+              } ?>
+             
             </div>
             <div class="divider"></div>
               <?php
-                include "../dao/Aula.php";
-                $idProf = $_POST['idProf'];
-                $idInst = $_POST['idInst'];
-                $aula = new Aula;
                 $resultado = $aula->mostrarAula($idProf, $idInst);
                 $contador=0;
                 $num_linhas = mysqli_num_rows($resultado);
@@ -70,7 +134,7 @@
                                       <input type="hidden" name="idInst" value="<?php echo $idInst; ?>">
                                       <input type="hidden" name="idProf" value="<?php echo $idProf; ?>">
                                       <input type="hidden" name="idAlu" value="<?php echo $_SESSION['id']; ?>">
-                                      <button type="submit" class='btn waves-effect waves-light orange' type='submit'>Ver aula
+                                      <button type="submit" class='btn waves-effect waves-light orange'>Ver aula
                                         <i class='material-icons right white-text'>visibility</i>
                                       </button>
                                     </form>

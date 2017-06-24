@@ -188,6 +188,18 @@
 
 					echo "<META HTTP-EQUIV='REFRESH' CONTENT='0; URL=../views/homeAluno.php'>";				
 				}
+				elseif ($operacao == "avaliar") {
+
+					$idMatri = $_POST['idMatri'];
+					$nota = $_POST['nota'];
+
+					$user->idMatri = $idMatri;
+					$user->nota = $nota;
+
+					$user->avaliar();
+
+					echo "<META HTTP-EQUIV='REFRESH' CONTENT='0; URL=../views/homeAluno.php'>";
+				}
 			?>
 		</div>
 	</body>	
