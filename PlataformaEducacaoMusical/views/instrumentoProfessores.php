@@ -85,17 +85,28 @@
                     
                     if($resultado){
                       while($linha=mysqli_fetch_assoc($resultado)){
-                        $nome=$linha['nomeProf']; ?>
+                        $nome=$linha['nomeProf']; 
+                        $idProf=$linha['idProf'];
+                        ?>
+
                         <form method="post" action="../controller/controla.php">
                           <input type="hidden" name="operacao" value="cadastroAlunoInstrumentoProfessor">
                           <input type="hidden" name="idInst" value="<?php echo $codigo; ?>">
                           <input type="hidden" name="idProf" value="<?php echo $linha['idProf']; ?>">    
                           <input type="hidden" name="idAlu" value="<?php echo $_SESSION['id']; ?>">                      
                           <li class='collection-item'>
-                            <div><?php echo $nome; ?>                         
+                            <div><?php echo $nome; ?>     
+                              <?php 
+                                $resultado3 = $u->buscarNota($idProf, $codigo);
+                                if($resultado3){
+                                  while($linha=mysqli_fetch_assoc($resultado3)){
+                                    $nota=$linha['nota'];
+                                  }
+                                }
+                              ?>                    
                               <button type="submit" class='secondary-content tooltipped white' id="botaoVisualizar" data-position='bottom' data-delay='50' data-tooltip='Cadastrar-se'><i class='material-icons green-text'>add </i> </button> </form>
-                          <a href='./perfil.php'' class='secondary-content tooltipped' data-position='bottom' data-delay='50' data-tooltip='Ver Perfil'><i class='material-icons orange-text'>visibility</i></a>
-                          <a href='./instrumentoTela.php'' class='secondary-content tooltipped' data-position='bottom' data-delay='50' data-tooltip='Pontuação'> <i class='material-icons yellow-text '>star</i></a></div></li>   
+                          <a href='./perfil.php'' class='secondary-content tooltipped' data-position='bottom' data-delay='50' data-tooltip='Ver Perfil'> <i class='material-icons orange-text'> visibility </i></a> 
+                          <a href='./instrumentoTela.php'' class='secondary-content tooltipped black-text' data-position='bottom' data-delay='50' data-tooltip='Pontuação'> <?php echo round($nota);; ?>  &nbsp; </a></div></li>   
                       <?php } 
                     }
                     ?>

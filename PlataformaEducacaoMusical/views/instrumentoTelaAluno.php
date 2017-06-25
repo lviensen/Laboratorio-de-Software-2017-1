@@ -122,7 +122,7 @@
                             <div class="col s12 m12">
                               <div class="card horizontal">
                                 <div class="card-image">
-                                  <h5 class="center">   Aula <?php echo $contador; ?></h5>
+                                  <h5 class="center"> &nbsp;  Aula <?php echo $contador; ?></h5>
                                 </div>
                                 <div class="card-stacked">
                                   <div class="card-content">
