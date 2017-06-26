@@ -12,78 +12,15 @@
         <!--Import jQuery before materialize.js-->
         <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
         <script type="text/javascript" src="js/materialize.min.js"></script>
-        <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
-
+        <script>
+            $(document).ready(function () {
+                $('select').material_select();
+            });
+        </script>
 
     </head>
     <body class="grey lighten-2">
-        <?php 
-            session_start();
-            
-            if (isset($_SESSION['verificador']) && isset($_SESSION['mensagem'])) { ?>
-                <div id="snackbar"><div class="mdl-spinner mdl-js-spinner is-active"></div> <?php echo  $_SESSION['mensagem']; ?> </div>
-
-                <style>
-                    #snackbar {
-                        visibility: hidden; /* Hidden by default. Visible on click */
-                        min-width: 250px; /* Set a default minimum width */
-                        margin-left: -125px; /* Divide value of min-width by 2 */
-                        background-color: #333; /* Black background color */
-                        color: #fff; /* White text color */
-                        text-align: center; /* Centered text */
-                        border-radius: 2px; /* Rounded borders */
-                        padding: 16px; /* Padding */
-                        position: fixed; /* Sit on top of the screen */
-                        z-index: 1; /* Add a z-index if needed */
-                        left: 50%; /* Center the snackbar */
-                        bottom: 30px; /* 30px from the bottom */
-                    }
-                    /* Show the snackbar when clicking on a button (class added with JavaScript) */
-                    #snackbar.show {
-                        visibility: visible; /* Show the snackbar */
-                        /* Add animation: Take 0.5 seconds to fade in and out the snackbar. 
-                        However, delay the fade out process for 2.5 seconds */
-                        -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
-                        animation: fadein 0.5s, fadeout 0.5s 2.5s;
-                    }
-                    /* Animations to fade the snackbar in and out */
-                    @-webkit-keyframes fadein {
-                        from {bottom: 0; opacity: 0;} 
-                        to {bottom: 30px; opacity: 1;}
-                    }
-                    @keyframes fadein {
-                        from {bottom: 0; opacity: 0;}
-                        to {bottom: 30px; opacity: 1;}
-                    }
-                    @-webkit-keyframes fadeout {
-                        from {bottom: 30px; opacity: 1;} 
-                        to {bottom: 0; opacity: 0;}
-                    }
-                    @keyframes fadeout {
-                        from {bottom: 30px; opacity: 1;}
-                        to {bottom: 0; opacity: 0;}
-                    }
-                </style>
-
-                <script>
-                    window.onload = toast;
-                    
-                    function toast() {
-                        // Get the snackbar DIV
-                        var x = document.getElementById("snackbar");
-                        // Add the "show" class to DIV
-                        x.className = "show";
-                        // After 3 seconds, remove the show class from DIV
-                        setTimeout(function () {
-                            x.className = x.className.replace("show", "");
-                        }, 6000);
-                    }
-                </script>
-
-                <?php 
-                    }session_destroy();
-                ?>
-
+    <?php include "views/aviso.php"; ?>
     <div>
         <div class="row">
 
@@ -127,6 +64,17 @@
                                 </div>
                             <div class="col s2"></div>
                             </div>
+                            <div class="row">
+                                <div class="col s2"></div>
+                                <div class="input-field col s12 m6 l8 ">
+                                  <select name="tipo" >
+                                    <option value="adm" >Eu sou</option>
+                                    <option value="aluno">Aluno</option>
+                                    <option value="professor">Professor</option>
+                                  </select>                                  
+                                </div>
+                            <div class="col s2"></div>
+                            </div>  
                             <center>                                
                                 <div class='row'>
                                     <div class="col s3 offset-s4">

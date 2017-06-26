@@ -17,6 +17,7 @@
         </script>
     </head>
     <body class="grey lighten-2">
+        <?php include "views/aviso.php"; ?>
         <div class="row">
             <center>
                 <div class="section"></div>

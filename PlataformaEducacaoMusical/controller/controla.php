@@ -35,55 +35,91 @@
 					$user->descricao = $descricao;
 
 					if ($tipo == "aluno") {
-						$user->inserirAlu();
+						$userAlu = new Usuario;
+						$resultado1 = $userAlu->buscarUsuariosAlu($email);
+						$num_linhas = mysqli_num_rows($resultado1);
+						if ($resultado1) {							
+							while($linha=mysqli_fetch_assoc($resultado1)){ 
+								if ($linha['email'] == $email) {
+									$_SESSION['mensagem']='ERRO!! Este email já está cadastrado!';
+									$_SESSION['verificador']='SIM';
+									echo "<META HTTP-EQUIV='REFRESH' CONTENT='0; URL=../cadastro.php'>";
+								}	
+							}	
+						}
+						if ($num_linhas==0){
+							$user->inserirAlu();
+							$_SESSION['mensagem']='Cadastro realizado com sucesso!';
+							$_SESSION['verificador']='SIM';
+							echo "<META HTTP-EQUIV='REFRESH' CONTENT='0; URL=../login.php'>";
+						}
 					}
 					elseif ($tipo == "professor") {
-						$user->inserirPro();
+						$userPro = new Usuario;
+						$resultado1 = $userPro->buscarUsuariosPro($email);
+						$num_linhas = mysqli_num_rows($resultado1);
+						if ($resultado1) {							
+							while($linha=mysqli_fetch_assoc($resultado1)){ 
+								if ($linha['email'] == $email) {
+									$_SESSION['mensagem']='ERRO!! Este email já está cadastrado!';
+									$_SESSION['verificador']='SIM';
+									echo "<META HTTP-EQUIV='REFRESH' CONTENT='0; URL=../cadastro.php'>";
+								}	
+							}	
+						}
+						if ($num_linhas==0){
+							$user->inserirPro();
+							$_SESSION['mensagem']='Cadastro realizado com sucesso!';
+							$_SESSION['verificador']='SIM';
+							echo "<META HTTP-EQUIV='REFRESH' CONTENT='0; URL=../login.php'>";
+						}
 					}
-					
-					$_SESSION['mensagem']='Cadastro realizado com sucesso!';
-					$_SESSION['verificador']='SIM';
-					echo "<META HTTP-EQUIV='REFRESH' CONTENT='0; URL=../login.php'>";
-					
 				}		
 
 				else if($operacao == "logar"){
 					$email = $_POST["email"];
 					$senha = $_POST["senha"];
+					$tipo = $_POST["tipo"];
 
+					
 					$userL = new Usuario;
 					
 					$userL->email = $email;
 					$userL->senha = $senha;
 					
-					$resultadoAdm = $userL->buscarUsuariosAdm($email);
-					
-					while($linha=mysqli_fetch_assoc($resultadoAdm)){
-						$idBancoAdm = $linha['id'];
-						$nomeBancoAdm = $linha['nome'];
-						$emailBancoAdm = $linha['email'];
-						$senhaBancoAdm = $linha['senha'];
-					}
-					
-					if($email==$emailBancoAdm){
-						if($senha==$senhaBancoAdm){
-							$_SESSION['nome'] = $nomeBancoAdm;
-							$_SESSION['senha'] = $senhaBancoAdm;
-							$_SESSION['id'] = $idBancoAdm;
-							$_SESSION['email'] = $emailBancoAdm;
-							echo "<META HTTP-EQUIV='REFRESH' CONTENT='0; URL=../views/adm.php'>";
+					if ($tipo == "adm") {
+						$resultadoAdm = $userL->buscarUsuariosAdm($email);
+						$num_linhas = mysqli_num_rows($resultadoAdm);
+						while($linha=mysqli_fetch_assoc($resultadoAdm)){
+							$idBancoAdm = $linha['id'];
+							$nomeBancoAdm = $linha['nome'];
+							$emailBancoAdm = $linha['email'];
+							$senhaBancoAdm = $linha['senha'];
 						}
-						else{
-							$_SESSION['mensagem']='Senha Incorreta!';
-							$_SESSION['local']='../login.php';
+	                    if ($num_linhas==0) {
+							$_SESSION['mensagem']='Este email não é do Administrador!';
+							$_SESSION['verificador']='SIM';
+							echo "<META HTTP-EQUIV='REFRESH' CONTENT='0; URL=../login.php'>";		                        
+	                    }						
+						elseif($email==$emailBancoAdm){
+							if($senha==$senhaBancoAdm){
+								$_SESSION['nome'] = $nomeBancoAdm;
+								$_SESSION['senha'] = $senhaBancoAdm;
+								$_SESSION['id'] = $idBancoAdm;
+								$_SESSION['email'] = $emailBancoAdm;
+								echo "<META HTTP-EQUIV='REFRESH' CONTENT='0; URL=../views/adm.php'>";
+							}
+							else{
+								$_SESSION['mensagem']='Senha incorreta!!';
+								$_SESSION['verificador']='SIM';
+								echo "<META HTTP-EQUIV='REFRESH' CONTENT='0; URL=../login.php'>";							
 
-							echo "<meta http-equiv='refresh' content='0;url=../views/jqueryModal.php?numero=1'>";							
-
-						}
+							}
+						}						
 					}
-					else{ 	
-
+					elseif ($tipo == "aluno") {
 						$resultadoAlu = $userL->buscarUsuariosAlu($email);
+						$num_linhasAlu = mysqli_num_rows($resultadoAlu);
 						while($linha=mysqli_fetch_assoc($resultadoAlu)){
 							$idBancoAlu = $linha['id'];
 							$nomeBancoAlu = $linha['nome'];
@@ -91,8 +127,13 @@
 							$senhaBancoAlu = $linha['senha'];
 							$cidadeBancoAlu = $linha['cidade'];
 							$descricaoBancoAlu = $linha['descricao'];
-						}
-						if($senha==$senhaBancoAlu){
+						}						
+	                    if ($num_linhasAlu==0) {
+							$_SESSION['mensagem']='Este email não está cadastrado como aluno!';
+							$_SESSION['verificador']='SIM';
+							echo "<META HTTP-EQUIV='REFRESH' CONTENT='0; URL=../login.php'>";		                        
+	                    }
+						elseif($senha==$senhaBancoAlu){
 							$_SESSION['nome'] = $nomeBancoAlu;
 							$_SESSION['senha'] = $senhaBancoAlu;
 							$_SESSION['id'] = $idBancoAlu;
@@ -102,34 +143,41 @@
 							echo "<META HTTP-EQUIV='REFRESH' CONTENT='0; URL=../views/homeAluno.php'>";
 						}
 						else{
-							$resultadoPro = $userL->buscarUsuariosPro($email);
-							while($linha=mysqli_fetch_assoc($resultadoPro)){
-								$idBancoPro = $linha['id'];
-								$nomeBancoPro = $linha['nome'];
-								$emailBancoPro = $linha['email'];
-								$senhaBancoPro = $linha['senha'];
-								$cidadeBancoPro = $linha['cidade'];
-								$descricaoBancoPro = $linha['descricao'];
-							}
-							if($senha==$senhaBancoPro){
-								$_SESSION['nome'] = $nomeBancoPro;
-								$_SESSION['senha'] = $senhaBancoPro;
-								$_SESSION['id'] = $idBancoPro;
-								$_SESSION['email'] = $emailBancoPro;
-								$_SESSION['cidade'] = $cidadeBancoPro;
-								$_SESSION['descricao'] = $descricaoBancoPro;
-								echo "<META HTTP-EQUIV='REFRESH' CONTENT='0; URL=../views/home.php'>";
-							}
-							else{
-								$_SESSION['mensagem']='Dados incorretos!';
-								$_SESSION['local']='../login.php';
-
-								echo "<meta http-equiv='refresh' content='0;url=../views/jqueryModal.php?numero=1'>";							
-
-							}							
-
+							$_SESSION['mensagem']='Senha incorreta!!';
+							$_SESSION['verificador']='SIM';
+							echo "<META HTTP-EQUIV='REFRESH' CONTENT='0; URL=../login.php'>";		
 						}
-
+					}
+					elseif ($tipo == "professor") {
+						$resultadoPro = $userL->buscarUsuariosPro($email);
+						$num_linhasPro = mysqli_num_rows($resultadoPro);
+						while($linha=mysqli_fetch_assoc($resultadoPro)){
+							$idBancoPro = $linha['id'];
+							$nomeBancoPro = $linha['nome'];
+							$emailBancoPro = $linha['email'];
+							$senhaBancoPro = $linha['senha'];
+							$cidadeBancoPro = $linha['cidade'];
+							$descricaoBancoPro = $linha['descricao'];
+						}
+	                    if ($num_linhasPro==0) {
+							$_SESSION['mensagem']='Este email não está cadastrado como professor!';
+							$_SESSION['verificador']='SIM';
+							echo "<META HTTP-EQUIV='REFRESH' CONTENT='0; URL=../login.php'>";		                        
+	                    }
+						elseif($senha==$senhaBancoPro){
+							$_SESSION['nome'] = $nomeBancoPro;
+							$_SESSION['senha'] = $senhaBancoPro;
+							$_SESSION['id'] = $idBancoPro;
+							$_SESSION['email'] = $emailBancoPro;
+							$_SESSION['cidade'] = $cidadeBancoPro;
+							$_SESSION['descricao'] = $descricaoBancoPro;
+							echo "<META HTTP-EQUIV='REFRESH' CONTENT='0; URL=../views/home.php'>";
+						}
+						else{
+							$_SESSION['mensagem']='Senha incorreta!!';
+							$_SESSION['verificador']='SIM';
+							echo "<META HTTP-EQUIV='REFRESH' CONTENT='0; URL=../login.php'>";
+						}						
 					}
 					
 				}	
