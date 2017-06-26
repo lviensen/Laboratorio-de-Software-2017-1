@@ -8,6 +8,7 @@
 
         <!--Let browser know website is optimized for mobile-->
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <!--Import jQuery before materialize.js-->
         <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
         <script type="text/javascript" src="../js/materialize.min.js"></script>
     </head>
@@ -60,26 +61,34 @@
                           <th>Opções</th>
                       </tr>
                     </thead>
+                    <?php 
+                      include "../dao/Instrumento.php";
+                      $inst = new Instrumento;
 
-                    <tbody>
-                      <tr>
-                        <td>Bateria</td>
-                        <td><a class="btn-floating"><i class="material-icons green">thumb_up</i></a>       
-                        <a class="btn-floating"><i class="material-icons red">thumb_down</i></a></td>
-                      </tr>
-                      <tr>
-                        <td>Pandeiro</td>
-                        <td><a class="btn-floating"><i class="material-icons green">thumb_up</i></a>       
-                        <a class="btn-floating"><i class="material-icons red">thumb_down</i></a></td>
-                      </tr>
-                    </tbody>
+                      $resultado = $inst->mostrarInstSolicitados();
+                      $num_linhas = mysqli_num_rows($resultado);
+                      if($resultado){
+                        while($linha=mysqli_fetch_assoc($resultado)){
+                          $nome=$linha['nomeInstSolicitado'];
+                          $id=$linha['idInstSolicitado']; ?>
+                          <form method="post" action="../controller/controlaInstrumento.php">
+                            <input type="hidden" name="operacao" value="cadastroInstrumento"/>
+                            <input type="hidden" name="nome" value="<?php echo $nome; ?>">
+                            <input type="hidden" name="id" value="<?php echo $id; ?>">
+                            <tbody>
+                              <tr>
+                                <td> <?php echo $nome; ?> </td>
+                                <td><button type="submit" class="btn-floating"><i class="material-icons green">thumb_up</i></button>   
+                                <button type="submit" class="btn-floating"><i class="material-icons red">thumb_down</i></button></td>
+                              </tr>
+                            </tbody>
+                          </form>
+                       <?php }
+                      }
+                    ?>
                   </table>
             </div>
         </div>
         <div class="divider"></div>            
-
-        <!--Import jQuery before materialize.js-->
-        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-        <script type="text/javascript" src="../js/materialize.min.js"></script>
     </body>
 </html>

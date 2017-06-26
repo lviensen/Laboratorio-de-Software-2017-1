@@ -11,6 +11,7 @@
         <!--Import jQuery before materialize.js-->
         <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
         <script type="text/javascript" src="../js/materialize.min.js"></script>
+        <script type="text/javascript" src="../js/jquery-3.1.1.min.js"></script>
         <script type="text/javascript">
           $(".button-collapse").sideNav();
           $(document).ready(function(){
@@ -86,7 +87,7 @@
                           <li class="collection-item"><div><?php echo $nomeInst; ?>  (<?php echo $nomeProf; ?>)<button type="submit" id="botaoVisualizar" class="secondary-content tooltipped white" data-position="bottom" data-delay="50" data-tooltip="Visualizar Instrumento"><i class="material-icons orange-text">visibility</i></button></div></li> </form><?php                    
                       }
                       if ($num_linhas==0) {
-                        echo "<li class='collection-item'><div>Você ainda não possui nenhum intrumento<a href='./instrumentoTela.php'' class='secondary-content tooltipped' </a></div></li>";
+                        echo "<li class='collection-item'><div>Você ainda não possui nenhum intrumento<a href='./instrumentoTela.php' class='secondary-content tooltipped'> </a></div></li>";
                       }                      
                     }
                     ?>
@@ -118,6 +119,7 @@
                   </div>
             </div>
           </div>
+        </div>
         </div>
         <div class="divider"></div>
     </body>

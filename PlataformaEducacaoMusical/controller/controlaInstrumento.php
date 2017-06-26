@@ -27,10 +27,24 @@
 					
 					$inst->nome = $nome;
 					
-					$inst->inserirInst();
+					$inst->inserirInstSolicitado();
 					
 					
 					echo "<META HTTP-EQUIV='REFRESH' CONTENT='0; URL=../views/home.php'>";
+					
+				}	
+				elseif($operacao == "cadastroInstrumento"){
+
+
+					$nome = $_POST["nome"];
+					$id = $_POST["id"];
+					
+					$inst->nome = $nome;
+					$inst->id = $id;
+					$inst->inserirInst();
+					$inst->excluirInstSolicitado();
+					
+					echo "<META HTTP-EQUIV='REFRESH' CONTENT='0; URL=../views/adm.php'>";
 					
 				}		
 			?>

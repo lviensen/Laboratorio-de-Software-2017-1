@@ -55,7 +55,7 @@
                     <center>                                
                         <div class='row'>
                             <div class="col s2 offset-s5">
-                                <button type='submit' solicitaCadastroInstrumento' name="solicitaCadastroInstrumento" class='col s12 btn btn-small waves-effect waves-light btn'>Solicitar</button>   
+                                <button type='submit'  name="solicitaCadastroInstrumento" class='col s12 btn btn-small waves-effect waves-light btn'>Solicitar</button>   
                             </div>                                   
                         </div>
                     </center> 
