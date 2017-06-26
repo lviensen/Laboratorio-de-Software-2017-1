@@ -29,7 +29,8 @@
 					
 					$inst->inserirInstSolicitado();
 					
-					
+					$_SESSION['mensagem']='Solicitação feita com sucesso!';
+					$_SESSION['verificador']='SIM';
 					echo "<META HTTP-EQUIV='REFRESH' CONTENT='0; URL=../views/home.php'>";
 					
 				}	

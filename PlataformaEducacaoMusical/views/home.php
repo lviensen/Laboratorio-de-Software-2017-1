@@ -25,6 +25,7 @@
     </head>
 
     <body class="grey lighten-2">
+      <?php include './aviso.php'; ?>
         <!-- Modal Structure
         <div id="modal1" class="modal">
           <div class="modal-content">
@@ -45,7 +46,7 @@
         <ul id="dropdown1" class="dropdown-content">
           <li><a href="perfil.php" class="orange-text">Perfil</a></li>
           <li class="divider"></li>
-          <li><a href="../controller/sair.php?id='<?php session_start(); echo $_SESSION['id'];?>" name="sair" class="orange-text">Sair</a></li>
+          <li><a href="../controller/sair.php?id='<?php  echo $_SESSION['id'];?>" name="sair" class="orange-text">Sair</a></li>
         </ul>
         <ul id="dropdown2" class="dropdown-content">
           <li><a href="perfil.php" class="orange-text">Perfil</a></li>
@@ -84,7 +85,7 @@
                   <li class="collection-header"><a href="#" class="brand-logo black-text">Meus Instrumentos</a></li>
 
                   <?php
-                    include "../dao/Instrumento.php";
+                    include '../dao/Instrumento.php';
                     
                     $inst = new Instrumento;
                     

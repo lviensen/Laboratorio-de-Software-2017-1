@@ -93,6 +93,14 @@
                   } 
                 }  
               ?>
+          <br><br>    
+          <center>                                
+              <div class='row'>
+                  <div class="col s4 offset-s4">
+                      <a href="home.php">Voltar</a>   
+                  </div>                                   
+              </div>
+          </center>           
           </div>
           <form method="post" action="./cadastroAula.php">
             <input type="hidden" name="idInst" value="<?php echo $codigo; ?>">

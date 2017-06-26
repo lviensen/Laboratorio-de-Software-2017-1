@@ -8,6 +8,16 @@
 
         <!--Let browser know website is optimized for mobile-->
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+         <!--Import jQuery before materialize.js-->
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script type="text/javascript" src="../js/materialize.min.js"></script>
+        <script type="text/javascript">
+          $(".button-collapse").sideNav();
+          $(document).ready(function(){
+            $('.tooltipped').tooltip({delay: 50});
+          });
+        </script>
+        <script type="text/javascript" src="../js/javascriptPesquisar.js"></script>
         <style>
           #botaoVisualizar{
             border: none;
@@ -62,12 +72,17 @@
                     <form class="form-horizontal" role="form">
                       <div class="form-group">
                           <div class="col-sm-10">
+                              <input type="hidden" name="nomeInst" value="<?php echo $nome; ?>">
+                              <input type="hidden" name="idInst" value="<?php echo $idInstrumento; ?>">                              
                               <input type="text" class="form-control" id="pesquisa" name="pesquisa" placeholder="Buscar">
                           </div>
                       </div>        
                     </form>
                   </li>
-
+            <ul class='resultado'>        
+            </ul>
+            <div class="divider"></div>
+            <div class="divider"></div>
                   <?php
                     include "../dao/Instrumento.php";
                     
@@ -75,14 +90,15 @@
                     
                     $resultado = $inst->mostrarInstrumento();
                     
-                    if($resultado){
-                      while($linha=mysqli_fetch_assoc($resultado)){
+                    if($resultado && $_SESSION['busca']=='false'){
+                      while($linha=mysqli_fetch_assoc($resultado)){ ?><div id="el"> <?php 
                         $nome=$linha['nome'];
                         $idInstrumento=$linha['id']; ?>
+
                         <form method="post" action="./InstrumentoProfessores.php">
                           <input type="hidden" name="nomeInst" value="<?php echo $nome; ?>">
                           <input type="hidden" name="idInst" value="<?php echo $idInstrumento; ?>">
-                          <li class="collection-item"><div><?php echo $nome; ?><button type="submit" id="botaoVisualizar"  class="secondary-content tooltipped white" data-position="bottom" data-delay="50" data-tooltip="Ver Professores"><i class="material-icons orange-text">visibility</i> </button></div></li></form> <?php                        
+                          <li class="collection-item"><div><?php echo $nome; ?><button type="submit" id="botaoVisualizar"  class="secondary-content tooltipped white" data-position="bottom" data-delay="50" data-tooltip="Ver Professores"><i class="material-icons orange-text">visibility</i> </button></div></li></form></div><?php                        
                       }
                     }
                     ?>
@@ -92,14 +108,9 @@
           </div>
         </div>
 
-        <!--Import jQuery before materialize.js-->
-        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-        <script type="text/javascript" src="../js/materialize.min.js"></script>
-        <script type="text/javascript">
-          $(".button-collapse").sideNav();
-          $(document).ready(function(){
-            $('.tooltipped').tooltip({delay: 50});
-          });
-        </script>
+
+
+
+
     </body>
 </html>

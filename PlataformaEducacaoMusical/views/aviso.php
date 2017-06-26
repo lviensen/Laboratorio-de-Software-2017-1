@@ -1,6 +1,4 @@
-<html>
 
-	<body>
 		<div>
         <?php 
             session_start();
@@ -66,8 +64,7 @@
                 </script>
 
                 <?php 
-                    }session_destroy();
+                    }unset( $_SESSION['verificador'] );  // irá remover apenas os dados de 'verificador'
+                    unset( $_SESSION['mensagem'] );  // irá remover apenas os dados de 'mensagem'
                 ?>
 		</div>
-	</body>
-</html>

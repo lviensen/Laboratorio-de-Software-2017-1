@@ -100,13 +100,30 @@
                                 $resultado3 = $u->buscarNota($idProf, $codigo);
                                 if($resultado3){
                                   while($linha=mysqli_fetch_assoc($resultado3)){
-                                    $nota=$linha['nota'];
+                                    if (is_null($linha['nota'])) {
+                                      $nota='Ainda não avaliado';
+                                    }
+                                    if ($linha['nota'] <=1 && $linha['nota'] > 0) {
+                                      $nota='Ruim';
+                                    }
+                                    elseif ($linha['nota'] <=2 && $linha['nota'] > 1) {
+                                      $nota='Razoável';
+                                    }
+                                    elseif ($linha['nota'] <=3 && $linha['nota'] > 2) {
+                                      $nota='Bom';
+                                    }
+                                    elseif ($linha['nota'] <=4 && $linha['nota'] > 3) {
+                                      $nota='Muito bom';
+                                    }
+                                    elseif ($linha['nota'] <=5 && $linha['nota'] > 4) {
+                                      $nota='Ótimo';
+                                    }
                                   }
                                 }
                               ?>                    
                               <button type="submit" class='secondary-content tooltipped white' id="botaoVisualizar" data-position='bottom' data-delay='50' data-tooltip='Cadastrar-se'><i class='material-icons green-text'>add </i> </button> </form>
                           <a href='./perfil.php'' class='secondary-content tooltipped' data-position='bottom' data-delay='50' data-tooltip='Ver Perfil'> <i class='material-icons orange-text'> visibility </i></a> 
-                          <a href='./instrumentoTela.php'' class='secondary-content tooltipped black-text' data-position='bottom' data-delay='50' data-tooltip='Pontuação'> <?php echo round($nota);; ?>  &nbsp; </a></div></li>   
+                          <a href='./instrumentoTela.php'' class='secondary-content tooltipped black-text' data-position='bottom' data-delay='50' data-tooltip='Pontuação'> <?php echo $nota; ?>  &nbsp; </a></div></li>   
                       <?php } 
                     }
                     ?>

@@ -78,7 +78,7 @@
                         echo "<li class='collection-item'><div>".$nome."<a href='./perfil.php'' class='secondary-content tooltipped' data-position='bottom' data-delay='50' data-tooltip='Ver Perfil'><i class='material-icons orange-text'>visibility</i></a></div></li>";     
                       }
                       if ($num_linhas==0) {
-                        echo "<li class='collection-item'><div>Você ainda não possui nenhum intrumento<a href='./instrumentoTela.php'' class='secondary-content tooltipped' </a></div></li>";
+                        echo "<li class='collection-item'><div>Você ainda não possui nenhum aluno<a href='./instrumentoTela.php'' class='secondary-content tooltipped' </a></div></li>";
                       }
                     }
                     ?>
@@ -87,7 +87,13 @@
             </div>
           </div>
         </div>
-
+                    <center>                                
+                        <div class='row'>
+                            <div class="col s4 offset-s4">
+                                <a href="home.php">Voltar</a>   
+                            </div>                                   
+                        </div>
+                    </center> 
         <!--Import jQuery before materialize.js-->
         <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
         <script type="text/javascript" src="../js/materialize.min.js"></script>
