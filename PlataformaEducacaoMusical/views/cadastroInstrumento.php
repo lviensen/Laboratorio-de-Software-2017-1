@@ -60,13 +60,13 @@
                         </div>
                     </center> 
                     <br>
-                    <center>                                
-                        <div class='row'>
-                            <div class="col s4 offset-s4">
-                                <a href="home.php">Voltar</a>   
-                            </div>                                   
-                        </div>
-                    </center> 
+                  <center>                                
+                      <div class='row'>
+                          <div class="col s4 offset-s4">
+                              <a class="btn blue accent-1" href="home.php">Voltar</a>   
+                          </div>                                   
+                      </div>
+                  </center> 
                   </form>
             </div>
         </div>

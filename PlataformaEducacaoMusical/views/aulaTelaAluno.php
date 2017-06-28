@@ -23,7 +23,7 @@
                   <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <li><a href="mensagensTela.php"><i class="material-icons right">email</i> Mensagens</a></li>
                     <li><a href="notificacaoTela.php"><i class="material-icons right">info_outline</i> Notificações</a></li>
-                    <li><a href="#"><i class="material-icons right">library_music</i> Cursos</a></li>
+                    <li><a href="instrumento.php"><i class="material-icons right">library_music</i> Instrumentos</a></li>
                     <li><a class="dropdown-button" href="#!" data-activates="dropdown1"><?php  echo $_SESSION['nome']; ?> <i class="material-icons right">arrow_drop_down</i></a></li>
                   </ul>
                 </div>
@@ -34,7 +34,7 @@
           <div class="section">
             <div class="row">
               <div class="col-md-12">
-                <h3 class="center">Violão</h3>
+                <h3 class="center"><?php echo $_POST['nomeInst']; ?> </h3>
               </div>
             </div>
             <div class="divider"></div>
@@ -61,7 +61,7 @@
                         <div class='col s12 m12'>
                           <div class='card horizontal'>
                             <div class='card-image'>
-                              <h5 class='center' style='margin-left: 50%;'>".$contador."</h5>
+                              <h5 class='center' style='margin-left: 50%;'></h5>
                             </div>
                             <div class='card-stacked'>
                               <div class='card-content'>
@@ -76,7 +76,7 @@
                 <div class='divider'></div>
                 <div class='row'>
                   <div class='col-md-12'>
-                    <div style='position:relative;height:0;padding-bottom:56.25%''><iframe src='".$video."' width='640' height='360' frameborder='0' style='position:absolute;width:100%;height:100%;left:0' allowfullscreen></iframe></div>
+                    <div style='position:relative;height:0;padding-bottom:46.25%''><iframe src='".$video."' width='640' height='360' frameborder='0' style='position:absolute;width:80%;height:80%;left:0' allowfullscreen></iframe></div>
                   </div>     
                   <div class='divider'></div>        
                 <div class='row'>
@@ -115,13 +115,19 @@
             <i class='material-icons right'>send</i>
           </button> 
         </form>  
-        <center>                                
-          <div class='row'>
-              <div class="col s4 offset-s4">
-                  <a href="instrumentoTela.php">Voltar</a>   
-              </div>                                   
-          </div>
-      </center> 
+        <form method="post" action="./instrumentoTelaAluno.php">
+          <input type="hidden" name="idAula" value="<?php echo $idAula; ?>">
+          <input type="hidden" name="idProf" value="<?php echo $_POST['idProf']; ?>">
+          <input type="hidden" name="idAlu" value="<?php echo $_POST['idAlu']; ?>">
+          <input type="hidden" name="idInst" value="<?php echo $_POST['idInst']; ?>">        
+          <center>                                
+              <div class='row'>
+                  <div class="col s4 offset-s4">
+                      <button class="waves-effect btnwaves-light  btn blue accent-1" type="submit">Voltar</button>
+                  </div>                                   
+              </div>
+          </center> 
+        </form>
         <!--Import jQuery before materialize.js-->
         <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
         <script type="text/javascript" src="js/materialize.min.js"></script>

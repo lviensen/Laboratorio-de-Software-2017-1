@@ -86,7 +86,7 @@
                   <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <li><a href="mensagensTela.php"><i class="material-icons right">email</i> Mensagens</a></li>
                     <li><a href="notificacaoTela.php"><i class="material-icons right">info_outline</i> Notificações</a></li>
-                    <li><a href="#"><i class="material-icons right">library_music</i> Cursos</a></li>
+                    <li><a href="instrumento.php"><i class="material-icons right">library_music</i> Instrumentos</a></li>
                     <li><a class="dropdown-button" href="#!" data-activates="dropdown1"><?php  echo $_SESSION['nome']; ?> <i class="material-icons right">arrow_drop_down</i></a></li>
                   </ul>
                 </div>
@@ -130,6 +130,7 @@
                                   </div>
                                   <div class="card-action">
                                     <form method="post" action="./aulaTelaAluno.php">
+                                      <input type="hidden" name="nomeInst" value="<?php echo $_POST['nomeInst']; ?>">
                                       <input type="hidden" name="idAula" value="<?php echo $idAula; ?>">
                                       <input type="hidden" name="idInst" value="<?php echo $idInst; ?>">
                                       <input type="hidden" name="idProf" value="<?php echo $idProf; ?>">

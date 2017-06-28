@@ -206,9 +206,10 @@
 					$_SESSION['email'] = $email;
 					$_SESSION['senha'] = $senha;
 					$_SESSION['descricao'] = $descricao;
-					echo "<meta http-equiv='refresh' 
-					content='0;url=../views/jquerymodal.php?numero=1'>";
-					
+
+					$_SESSION['mensagem']='Dados alterados com sucesso!!';
+					$_SESSION['verificador']='SIM';
+					echo "<META HTTP-EQUIV='REFRESH' CONTENT='0; URL=../views/perfil.php'>";					
 				}
 				elseif ($operacao == "cadastrarProfInst") { 
 					$idProf = $_POST["idProf"];
@@ -233,7 +234,8 @@
 					$user->idInst = $idInst;
 
 					$user->inserirAlunoInstrumentoProfessor();
-
+					$_SESSION['mensagem']='Matrícula realizada com sucesso!';
+					$_SESSION['verificador']='SIM';					
 					echo "<META HTTP-EQUIV='REFRESH' CONTENT='0; URL=../views/homeAluno.php'>";				
 				}
 				elseif ($operacao == "avaliar") {

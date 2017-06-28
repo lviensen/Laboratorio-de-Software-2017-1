@@ -39,13 +39,27 @@
 
 					$nome = $_POST["nome"];
 					$id = $_POST["id"];
-					
+					$solicitacao = $_POST['solicitacao'];
+					echo $solicitacao;
+
 					$inst->nome = $nome;
 					$inst->id = $id;
-					$inst->inserirInst();
-					$inst->excluirInstSolicitado();
+
+					if ($solicitacao == 'aceitar') {
+						$inst->inserirInst();
+						$inst->excluirInstSolicitado();	
+						$_SESSION['mensagem']='Instrumento cadastrado!';
+						$_SESSION['verificador']='SIM';								
+						echo "<META HTTP-EQUIV='REFRESH' CONTENT='0; URL=../views/adm.php'>";			
+					}
+					if ($solicitacao == 'recusar') {
+						$inst->excluirInstSolicitado();	
+						$_SESSION['mensagem']='Instrumento recusado!';
+						$_SESSION['verificador']='SIM';								
+						echo "<META HTTP-EQUIV='REFRESH' CONTENT='0; URL=../views/adm.php'>";							
+					}
 					
-					echo "<META HTTP-EQUIV='REFRESH' CONTENT='0; URL=../views/adm.php'>";
+					
 					
 				}		
 			?>

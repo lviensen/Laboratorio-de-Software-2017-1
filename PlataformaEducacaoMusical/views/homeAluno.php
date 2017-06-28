@@ -25,6 +25,7 @@
         </style>
     </head>
     <body class="grey lighten-2">
+        <?php include './aviso.php'; ?>
         <!-- Dropdown Structure -->
         <ul id="dropdown1" class="dropdown-content">
           <li><a href="perfil.php" class="orange-text">Perfil</a></li>
@@ -44,7 +45,7 @@
                   <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <li><a href="mensagensTela.php"><i class="material-icons right">email</i> Mensagens</a></li>
                     <li><a href="notificacaoTela.php"><i class="material-icons right">info_outline</i> Notificações</a></li>
-                    <li><a href="#"><i class="material-icons right">library_music</i> Instrumentos</a></li>
+                    <li><a href="instrumento.php"><i class="material-icons right">library_music</i> Instrumentos</a></li>
                     <li><a class="dropdown-button" href="#!" data-activates="dropdown1"><?php  echo $_SESSION['nome']; ?> <i class="material-icons right">arrow_drop_down</i></a></li>
                   </ul>
                   <ul class="side-nav" id="mobile-demo">

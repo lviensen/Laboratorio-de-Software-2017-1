@@ -64,7 +64,7 @@
 			$bd = new ConexaoBD;
 
 			$bd->conectar();
-			return $bd->query("SELECT DISTINCT professor.nome as nomeProf, professor.id as idProf FROM professor, prof_inst, instrumento WHERE instrumento.id='$codigo' and prof_inst.idInst='$codigo' and prof_inst.idInst=instrumento.id and prof_inst.idProf=professor.id ORDER BY professor.nome ASC");
+			return $bd->query("SELECT DISTINCT professor.nome as nomeProf, professor.id as idProf, professor.email as emailProf, professor.cidade as cidProf, professor.descricao as descricaoProf FROM professor, prof_inst, instrumento WHERE instrumento.id='$codigo' and prof_inst.idInst='$codigo' and prof_inst.idInst=instrumento.id and prof_inst.idProf=professor.id ORDER BY professor.nome ASC");
 			$bd->fechar();
 		}		
 		function mostrarUsuarioAlterar($id){

@@ -13,6 +13,16 @@
             border: none;
           }
         </style> 
+        <!--Import jQuery before materialize.js-->
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script type="text/javascript" src="../js/materialize.min.js"></script>
+        <script type="text/javascript" src="../js/javascriptPesquisar.js"></script>
+        <script type="text/javascript">
+          $(".button-collapse").sideNav();
+          $(document).ready(function(){
+            $('.tooltipped').tooltip({delay: 50});
+          });
+        </script>
     </head>
     <body class="grey lighten-2">
         <!-- Dropdown Structure -->
@@ -34,7 +44,7 @@
                   <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <li><a href="mensagensTela.php"><i class="material-icons right">email</i> Mensagens</a></li>
                     <li><a href="notificacaoTela.php"><i class="material-icons right">info_outline</i> Notificações</a></li>
-                    <li><a href="#"><i class="material-icons right">library_music</i> Instrumentos</a></li>
+                    <li><a href="instrumento.php"><i class="material-icons right">library_music</i> Instrumentos</a></li>
                     <li><a class="dropdown-button" href="#!" data-activates="dropdown1"><?php echo $_SESSION['nome']; ?> <i class="material-icons right">arrow_drop_down</i></a></li>
                   </ul>
                   <ul class="side-nav" id="mobile-demo">
@@ -70,14 +80,7 @@
               <div class="col-md-12">
                 <ul class="collection with-header">
                   <li class="collection-header">                        
-                    <form class="form-horizontal" role="form">
-                      <div class="form-group">
-                          <div class="col-sm-10">
-                              <input type="text" class="form-control" id="pesquisa" name="pesquisa" placeholder="Buscar">
-                          </div>
-                      </div>    
-                    </form>
-                  </li>
+   
 
                   <?php
                     $u = new Usuario;
@@ -87,6 +90,9 @@
                       while($linha=mysqli_fetch_assoc($resultado)){
                         $nome=$linha['nomeProf']; 
                         $idProf=$linha['idProf'];
+                        $emailProf=$linha['emailProf'];
+                        $cidProf=$linha['cidProf'];
+                        $descricaoProf=$linha['descricaoProf'];
                         ?>
 
                         <form method="post" action="../controller/controla.php">
@@ -122,8 +128,15 @@
                                 }
                               ?>                    
                               <button type="submit" class='secondary-content tooltipped white' id="botaoVisualizar" data-position='bottom' data-delay='50' data-tooltip='Cadastrar-se'><i class='material-icons green-text'>add </i> </button> </form>
-                          <a href='./perfil.php'' class='secondary-content tooltipped' data-position='bottom' data-delay='50' data-tooltip='Ver Perfil'> <i class='material-icons orange-text'> visibility </i></a> 
-                          <a href='./instrumentoTela.php'' class='secondary-content tooltipped black-text' data-position='bottom' data-delay='50' data-tooltip='Pontuação'> <?php echo $nota; ?>  &nbsp; </a></div></li>   
+                              <!--<form method="post" action="./perfilProfessor.php">
+                                <input type="hidden" name="idProf" value="<?php echo $idProf; ?>">
+                                <input type="hidden" name="nomeProf" value="<?php echo $nome; ?>">
+                                <input type="hidden" name="emailProf" value="<?php echo $emailProf; ?>">    
+                                <input type="hidden" name="cidProf" value="<?php echo $cidProf; ?>"> 
+                                <input type="hidden" name="descricaoProf" value="<?php echo $descricaoProf; ?>">                               
+                                <button class='secondary-content tooltipped' id="botaoVisualizar" type="submit" data-position='bottom' data-delay='50' data-tooltip='Ver Perfil'> <i class='material-icons orange-text'> visibility </i></button> 
+                              </form> -->
+                              <a  class='secondary-content tooltipped black-text' data-position='bottom' data-delay='50' data-tooltip='Pontuação'> <?php echo $nota; ?>  &nbsp; </a></div></li>   <div class="divider"></div>
                       <?php } 
                     }
                     ?>
@@ -132,15 +145,5 @@
             </div>
           </div>
         </div>
-
-        <!--Import jQuery before materialize.js-->
-        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-        <script type="text/javascript" src="../js/materialize.min.js"></script>
-        <script type="text/javascript">
-          $(".button-collapse").sideNav();
-          $(document).ready(function(){
-            $('.tooltipped').tooltip({delay: 50});
-          });
-        </script>
     </body>
 </html>

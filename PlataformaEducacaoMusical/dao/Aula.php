@@ -78,7 +78,18 @@
 			return $bd->query("SELECT *, matricula.idMatri as idMatri FROM matricula, professor, instrumento, aluno WHERE professor.id='$idProf' AND professor.id=matricula.idProf AND aluno.id='$idAlu' AND matricula.idAlu=aluno.id AND instrumento.id='$idInst' AND instrumento.id=matricula.idInst");
 			$bd->fechar();				
 		}
-	}
+		function buscarNota($idProf, $idInst){
+			$bd = new ConexaoBD;
+			$bd->conectar();
+			return $bd->query("SELECT AVG(matricula.nota) as nota FROM matricula, professor, instrumento WHERE professor.id='$idProf' AND instrumento.id='$idInst' AND matricula.idProf=professor.id AND matricula.idInst=instrumento.id");
+			$bd->fechar();				
+		}		
+		function mostrarAula2(){
+			$bd = new ConexaoBD;
+			$bd->conectar();
+			return $bd->query("SELECT DISTINCT * FROM aula");
+			$bd->fechar();
+		}	}
 
 
 ?>

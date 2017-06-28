@@ -26,23 +26,6 @@
 
     <body class="grey lighten-2">
       <?php include './aviso.php'; ?>
-        <!-- Modal Structure
-        <div id="modal1" class="modal">
-          <div class="modal-content">
-            <h4>Cadastrar-se!</h4>
-            <p>Deseja realmente cadastrar-se a este instrumento?</p>
-          </div>
-          <div class="modal-footer">
-            <form method="post" action="../controller/controla.php">
-              <input type="hidden" name="operacao" value="cadastrarProfInst"/>
-              <input type="hidden" name="idInst" value="<?php //session_start(); echo $_SESSION['idInst']; ?>"/>
-              <input type="hidden" name="idProf" value="<?php// echo $_SESSION['id']; ?>"/>
-              <button class="modal-action modal-close waves-effect waves-green btn-flat green" type='submit' name='cadastrarProfInst'>Sim</button>
-            </form>
-            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat"> Não</a>
-          </div>
-        </div> -->
-        <!-- Dropdown Structure -->
         <ul id="dropdown1" class="dropdown-content">
           <li><a href="perfil.php" class="orange-text">Perfil</a></li>
           <li class="divider"></li>
@@ -63,13 +46,11 @@
                   <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <li><a href="mensagensTela.php"><i class="material-icons right">email</i> Mensagens</a></li>
                     <li><a href="notificacaoTela.php"><i class="material-icons right">info_outline</i> Notificações</a></li>
-                    <li><a href="#"><i class="material-icons right">library_music</i> Cursos</a></li>
                     <li><a class="dropdown-button" href="#!" data-activates="dropdown1"><?php  echo $_SESSION['nome']; ?> <i class="material-icons right">arrow_drop_down</i></a></li>
                   </ul>
                   <ul class="side-nav" id="mobile-demo">
                     <li><a href="#"><i class="material-icons right">email</i> Mensagens</a></li>
                     <li><a href="#"><i class="material-icons right">info_outline</i> Notificações</a></li>
-                    <li><a href="#"><i class="material-icons right">library_music</i> Cursos</a></li>
                     <a class="btn tooltipped" data-position="bottom" data-delay="50" data-tooltip="I am tooltip">Hover me!</a>
                     <li><a class="dropdown-button" href="#!" data-activates="dropdown2"><?php echo $_SESSION['nome']; ?> <i class="material-icons right">arrow_drop_down</i></a></li>
                   </ul>
@@ -108,7 +89,6 @@
 
                     ?>
                 </ul>
-                <a class="right btn-floating waves-effect waves-light red tooltipped" data-position="bottom" data-delay="50" data-tooltip="Adicionar Instrumento" href="cadastroInstrumento.php" ><i class="material-icons">add</i></a>
               </div>
             </div>
           </div>
@@ -120,6 +100,7 @@
             <div class="row">
               <div class="col-md-12">
                 <ul class="collection with-header">
+                  <a class="right btn-floating waves-effect waves-light red tooltipped" data-position="bottom" data-delay="50" data-tooltip="Adicionar Instrumento" href="cadastroInstrumento.php" ><i class="material-icons">add</i></a>
                   <li class="collection-header"><a href="#" class="brand-logo black-text">Outros Instrumentos</a></li>
                   <?php
                     
@@ -139,8 +120,7 @@
                       }
                     }
                     ?>
-                </ul>
-                <a class="right btn-floating waves-effect waves-light red tooltipped" data-position="bottom" data-delay="50" data-tooltip="Adicionar Instrumento" href="cadastroInstrumento.php" ><i class="material-icons">add</i></a>
+                </ul>              
               </div>
             </div>
           </div>

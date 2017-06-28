@@ -29,7 +29,7 @@
                   <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <li><a href="mensagensTela.php"><i class="material-icons right">email</i> Mensagens</a></li>
                     <li><a href="notificacaoTela.php"><i class="material-icons right">info_outline</i> Notificações</a></li>
-                    <li><a href="#"><i class="material-icons right">library_music</i> Instrumentos</a></li>
+                    <li><a href="instrumento.php"><i class="material-icons right">library_music</i> Instrumentos</a></li>
                     <li><a class="dropdown-button" href="#!" data-activates="dropdown1"><?php echo $_SESSION['nome']; ?> <i class="material-icons right">arrow_drop_down</i></a></li>
                   </ul>
                   <ul class="side-nav" id="mobile-demo">
@@ -45,7 +45,7 @@
         <div class="divider"></div>
         <div class="section">
             <div class="nav-wrapper">
-                <h4 class="brand-logo center">Lista de Professores de Violão</h4>
+                <h4 class="brand-logo center">Lista de Violão</h4>
             </div>
         </div>
         <div class="container">
@@ -73,7 +73,7 @@
                     if($resultado){
                       while($linha=mysqli_fetch_assoc($resultado)){
                         $nome=$linha['nome'];
-                        echo "<li class='collection-item'><div>".$nome."<a href='./instrumentoTela.php'' class='secondary-content tooltipped' data-position='bottom' data-delay='50' data-tooltip='Cadastrar-se'><i class='material-icons green-text'>add </i> </a><a href='./perfil.php'' class='secondary-content tooltipped' data-position='bottom' data-delay='50' data-tooltip='Ver Perfil'><i class='material-icons orange-text'>visibility</i></a><a href='./instrumentoTela.php'' class='secondary-content tooltipped' data-position='bottom' data-delay='50' data-tooltip='Pontuação'> <i class='material-icons yellow-text '>star</i></a></div></li>";     
+                        echo "<li class='collection-item'><div>".$nome."</div></li>";     
                       }
                     }
                     ?>

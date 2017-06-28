@@ -13,6 +13,7 @@
         <script type="text/javascript" src="../js/materialize.min.js"></script>
     </head>
     <body >
+        <?php include "./aviso.php"; ?>
         <!-- Dropdown Structure -->
         <ul id="dropdown1" class="dropdown-content">
           <li class="divider"></li>
@@ -30,15 +31,11 @@
                   <a href="#" class="brand-logo" style="margin-left: 5%;">Escola Musical</a>
                   <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
                   <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li><a href="mensagensTela.php"><i class="material-icons right">email</i> Mensagens</a></li>
-                    <li><a href="notificacaoTela.php"><i class="material-icons right">info_outline</i> Notificações</a></li>
-                    <li><a href="#"><i class="material-icons right">library_music</i> Cursos</a></li>
+                    <li><a href="instrumentosAdm.php"><i class="material-icons right">library_music</i> Instrumentos</a></li>
                     <li><a class="dropdown-button" href="#!" data-activates="dropdown1"><?php  echo $_SESSION['nome']; ?> <i class="material-icons right">arrow_drop_down</i></a></li>
                   </ul>
                   <ul class="side-nav" id="mobile-demo">
-                    <li><a href="#"><i class="material-icons right">email</i> Mensagens</a></li>
-                    <li><a href="#"><i class="material-icons right">info_outline</i> Notificações</a></li>
-                    <li><a href="#"><i class="material-icons right">library_music</i> Cursos</a></li>
+                    <li><a href="#"><i class="material-icons right">library_music</i> Instrumentos</a></li>
                     <a class="btn tooltipped" data-position="bottom" data-delay="50" data-tooltip="I am tooltip">Hover me!</a>
                     <li><a class="dropdown-button" href="#!" data-activates="dropdown2"><?php echo $_SESSION['nome']; ?> <i class="material-icons right">arrow_drop_down</i></a></li>
                   </ul>
@@ -78,17 +75,23 @@
                             <tbody>
                               <tr>
                                 <td> <?php echo $nome; ?> </td>
-                                <td><button type="submit" class="btn-floating"><i class="material-icons green">thumb_up</i></button>   
-                                <button type="submit" class="btn-floating"><i class="material-icons red">thumb_down</i></button></td>
+                                <td><button type="submit" class="btn-floating" name="solicitacao" value="aceitar"><i class="material-icons green">thumb_up</i></button>  
+                                <button type="submit" class="btn-floating" name="solicitacao" value="recusar"><i class="material-icons red">thumb_down</i></button></td>
                               </tr>
                             </tbody>
                           </form>
-                       <?php }
+                        <?php }
+                     
                       }
                     ?>
                   </table>
+                  <?php 
+                  if ($num_linhas==0) { ?>
+                    <div class="row">
+                      <div class="col s12 center"><span class="flow-text">Você ainda não possui aulas para este intrumento.</span>
+                    </div> <?php
+                  } ?>
             </div>
-        </div>
-        <div class="divider"></div>            
+        </div>         
     </body>
 </html>

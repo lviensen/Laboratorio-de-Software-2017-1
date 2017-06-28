@@ -23,7 +23,6 @@
                   <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <li><a href="mensagensTela.php"><i class="material-icons right">email</i> Mensagens</a></li>
                     <li><a href="notificacaoTela.php"><i class="material-icons right">info_outline</i> Notificações</a></li>
-                    <li><a href="#"><i class="material-icons right">library_music</i> Cursos</a></li>
                     <li><a class="dropdown-button" href="#!" data-activates="dropdown1"><?php echo $_SESSION['nome']; ?> <i class="material-icons right">arrow_drop_down</i></a></li>
                   </ul>
                 </div>
@@ -37,17 +36,47 @@
                 <input type="hidden" name="idInst" value="<?php echo $codigo; ?>">
                 <input type="hidden" name="idProf" value="<?php echo $_SESSION['id']; ?>">
                 <input type="hidden" name="nomeInst" value="<?php echo $_POST['nomeInst']; ?>">
-                <div class="col s5">
+                <div class="col s3">
                   <button class="waves-effect waves-light btn  amber lighten-1" type="submit">Ver alunos</button>
                 </div>   
               </form>         
-              <div class="col-md-6">
-                <h3><?php echo  $_POST['nomeInst']; ?>
+              <div class="col s6">
+                <h3 class="center"><?php echo  $_POST['nomeInst']; ?>
                 </h3>
+              </div>
+              <?php 
+                include "../dao/Aula.php";
+                $u = new Aula;
+                $resultado3 = $u->buscarNota($_SESSION['id'], $codigo);
+                if($resultado3){
+                  while($linha=mysqli_fetch_assoc($resultado3)){
+                    if (is_null($linha['nota'])) {
+                      $nota='Ainda não avaliado';
+                    }
+                    if ($linha['nota'] <=1 && $linha['nota'] > 0) {
+                      $nota='Ruim';
+                    }
+                    elseif ($linha['nota'] <=2 && $linha['nota'] > 1) {
+                      $nota='Razoável';
+                    }
+                    elseif ($linha['nota'] <=3 && $linha['nota'] > 2) {
+                      $nota='Bom';
+                    }
+                    elseif ($linha['nota'] <=4 && $linha['nota'] > 3) {
+                      $nota='Muito bom';
+                    }
+                    elseif ($linha['nota'] <=5 && $linha['nota'] > 4) {
+                      $nota='Ótimo';
+                    }
+                  }
+                }
+              ?>
+              <div class="col s3">
+                <h5>Avaliado como: <?php echo $nota; ?></h5>
               </div>
             </div>
               <?php
-                include "../dao/Aula.php";
+                
                 
                 $aula = new Aula;
                 
@@ -63,7 +92,7 @@
                       <div class='col s12 m12'>
                         <div class='card horizontal'>
                           <div class='card-image'>
-                            <h5 class='center'>   Aula <?php echo $contador; ?></h5>
+                            <h5 class='center'> &nbsp;   Aula <?php echo $contador; ?></h5>
                           </div>
                           <div class='card-stacked'>
                             <div class='card-content'>
@@ -97,15 +126,16 @@
           <center>                                
               <div class='row'>
                   <div class="col s4 offset-s4">
-                      <a href="home.php">Voltar</a>   
+                      <a class="btn blue accent-1" href="home.php">Voltar</a>   
                   </div>                                   
               </div>
           </center>           
           </div>
           <form method="post" action="./cadastroAula.php">
             <input type="hidden" name="idInst" value="<?php echo $codigo; ?>">
-            </div> <div class='divider'></div>
-             <div class='fixed-action-btn'>
+            <input type="hidden" name="nomeInst" value="<?php echo $_POST['nomeInst']; ?>">
+              <div class='divider'></div>
+              <div class='fixed-action-btn'>
               <button class='btn-floating btn-large red tooltipped' data-position='top' data-delay='50' data-tooltip='Cadastrar Aula' type="submit">
                 <i class='large material-icons'>add</i>
               </button>

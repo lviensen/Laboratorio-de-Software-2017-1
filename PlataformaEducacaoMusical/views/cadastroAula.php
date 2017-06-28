@@ -30,7 +30,7 @@
           <img class="responsive-img" src="../img/tutorial.png">
         </div>
         <div class="modal-footer">
-          <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+          <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Entendi</a>
         </div>
       </div>
         <!-- Dropdown Structure -->
@@ -46,7 +46,6 @@
                   <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <li><a href="mensagensTela.php"><i class="material-icons right">email</i> Mensagens</a></li>
                     <li><a href="notificacaoTela.php"><i class="material-icons right">info_outline</i> Notificações</a></li>
-                    <li><a href="#"><i class="material-icons right">library_music</i> Cursos</a></li>
                     <li><a class="dropdown-button" href="#!" data-activates="dropdown1"><?php  echo $_SESSION['nome']; ?> <i class="material-icons right">arrow_drop_down</i></a></li>
                   </ul>
                 </div>
@@ -153,14 +152,18 @@
                         </div>
                     </center>
                     <br>
-                    <center>                                
-                        <div class='row'>
-                            <div class="col s4 offset-s4">
-                                <a href="home.php">Voltar</a>   
-                            </div>                                   
-                        </div>
-                    </center> 
                   </form>
+                <form method="post" action="./instrumentoTela.php">
+                  <input type="hidden" name="idInst" value="<?php echo $codigoInst; ?>">
+                  <input type="hidden" name="nomeInst" value="<?php echo $_POST['nomeInst']; ?>">
+                  <center>                                
+                      <div class='row'>
+                          <div class="col s4 offset-s4">
+                              <button class="waves-effect btnwaves-light  btn blue accent-1" type="submit">Voltar</button>
+                          </div>                                   
+                      </div>
+                  </center> 
+                </form>
             </div>
         </div>
     </body>
