@@ -1,0 +1,74 @@
+SQL Base de dados escola
+
+
+Tabela adm
+
+CREATE TABLE `escola`.`adm` ( `id` INT NOT NULL AUTO_INCREMENT , `nome`VARCHAR(50) NOT NULL , `email` VARCHAR(50) NOT NULL , `senha` VARCHAR(50) NOTNULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
+
+Tabela aluno
+
+CREATE TABLE `escola`.`aluno` ( `id` INT NOT NULL AUTO_INCREMENT , `nome`VARCHAR(50) NOT NULL , `email` VARCHAR(50) NOT NULL , `cidade` VARCHAR(50) NOTNULL , `senha` VARCHAR(50) NOT NULL , `descricao` VARCHAR(300) NOT NULL ,PRIMARY KEY (`id`)) ENGINE = InnoDB;
+
+Tabela professor
+
+CREATE TABLE `escola`.`professor` ( `id` INT NOT NULL AUTO_INCREMENT , `nome`VARCHAR(50) NOT NULL , `email` VARCHAR(50) NOT NULL , `cidade` VARCHAR(50) NOTNULL , `senha` VARCHAR(50) NOT NULL , `descricao` VARCHAR(300) NOT NULL ,PRIMARY KEY (`id`)) ENGINE = InnoDB;
+
+Tabela instrumento
+
+CREATE TABLE `escola`.`instrumento` ( `id` INT NOT NULL AUTO_INCREMENT ,`nome` VARCHAR(100) NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
+
+Tabela aula
+
+CREATE TABLE `escola`.`aula` ( `id` INT NOT NULL AUTO_INCREMENT , `descricao`VARCHAR(500) NOT NULL , `video` VARCHAR(500) NOT NULL , `pdf` VARCHAR(300) NOTNULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
+
+Tabela profinst
+CREATE TABLE prof_inst (
+	idProf int(3) not null,
+	idInst int(3) not null,
+	primary key(idProf, idInst),
+	foreign key (idProf) references professor(id),
+	foreign key(idInst) references instrumento(id)
+);
+ 
+ 
+Tabela alu_inst  (Aluno Instrumento)
+CREATE TABLE alu_inst (
+	idAlu int(3) not null,
+	idInst int(3) not null,
+	primary key(idAlu, idInst),
+	foreign key (idAlu) references aluno(id),
+	foreign key(idInst) references instrumento(id)
+);
+
+Tabela Aulaprofinst
+CREATE TABLE aula_prof_inst (
+idAula int(3) not null,
+	idProf int(3) not null,
+	idInst int(3) not null,
+	primary key(idAula, idProf, idInst),
+foreign key (idAula) references aula(id),
+	foreign key (idProf) references professor(id),
+	foreign key(idInst) references instrumento(id)
+);
+
+Tabela matricula
+
+CREATE TABLE matricula (
+	idAlu int(3) not null,
+	idProf int(3) not null,
+	idInst int(3) not null,
+nota int(3),
+data date not null,
+aula_num int(3),
+idMatri int(3) not null AUTO_INCREMENT,
+	primary key(idMatri, idAlu, idprof, idInst),
+	foreign key (idAlu) references aluno(id),
+	foreign key (idProf) references professor(id),
+	foreign key(idInst) references instrumento(id)
+);
+
+Tabela InstrumentosSolicitados
+
+
+
+CREATE TABLE `escola`.`instrumentosSolicitados` ( `idInstSolicitado` INT NOT NULL AUTO_INCREMENT ,`nomeInstSolicitado` VARCHAR(100) NOT NULL , PRIMARY KEY (`idInstSolicitado`)) ENGINE = InnoDB;
